@@ -1,22 +1,39 @@
 {
   "name": "Legible",
   "version": "0.1.0",
-  "summary": "A short description of Legible.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/sparta-wrappercoreml/Legible",
+  "summary": "Quick and Nimble Behaviors and Helpers",
+  "description": "Set of Quick and Nimble Behaviors and Helpers\nto make spec more readable",
+  "homepage": "https://github.com/sparta-science/Legible",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "sparta-wrappercoreml": "paulz@users.noreply.github.com"
+    "sparta-science": "www.spartascience.com"
   },
   "source": {
-    "git": "https://github.com/sparta-wrappercoreml/Legible.git",
+    "git": "https://github.com/sparta-science/Legible.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "osx": "10.10"
+    "ios": "9.0",
+    "osx": "10.13",
+    "tvos": "9.0"
   },
-  "source_files": "Legible/Classes/**/*"
+  "source_files": "Legible/Classes/**/*",
+  "requires_arc": true,
+  "weak_frameworks": "XCTest",
+  "cocoapods_version": ">= 1.4.0",
+  "swift_versions": [
+    "5.0"
+  ],
+  "dependencies": {
+    "Nimble": [
+      "~> 9.0"
+    ],
+    "Quick": [
+      "~> 4.0"
+    ]
+  },
+  "swift_version": "5.0"
 }

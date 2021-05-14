@@ -16,7 +16,7 @@ to make spec more readable
   }
 
   s.ios.deployment_target = "9.0"
-  s.osx.deployment_target = "10.10"
+  s.osx.deployment_target = "10.13"
   s.tvos.deployment_target = "9.0"
   s.source_files = 'Legible/Classes/**/*'
   s.requires_arc = true
