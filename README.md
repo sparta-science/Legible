@@ -1,4 +1,5 @@
 # Legible
+Quick and Nimble Behaviors
 
 [![CI Status](https://img.shields.io/travis/sparta-wrappercoreml/Legible.svg?style=flat)](https://travis-ci.org/sparta-wrappercoreml/Legible)
 [![Version](https://img.shields.io/cocoapods/v/Legible.svg?style=flat)](https://cocoapods.org/pods/Legible)
@@ -19,10 +20,6 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'Legible'
 ```
-
-## Author
-
-sparta-wrappercoreml, paulz@users.noreply.github.com
 
 ## License
 
