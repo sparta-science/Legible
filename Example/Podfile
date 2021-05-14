@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'Legible_Example' do
+  pod 'Legible', :path => '../'
+
+  target 'Legible_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 2.2.0'
+    pod 'Nimble', '~> 8.0.7'
+  end
+end
