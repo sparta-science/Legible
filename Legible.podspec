@@ -15,9 +15,9 @@ to make spec more readable
       :tag => s.version.to_s
   }
 
-  s.ios.deployment_target = "9.0"
-  s.osx.deployment_target = "10.13"
-  s.tvos.deployment_target = "9.0"
+  s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.15'
+  s.tvos.deployment_target = '9.0'
   s.source_files = 'Legible/Classes/**/*'
   s.requires_arc = true
   s.weak_framework = 'XCTest'
