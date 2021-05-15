@@ -65,7 +65,9 @@ class BehavesLikeCombineSpec: QuickSpec {
                 itBehavesLike(CombinePublisher.self) {
                     Publishers.Sequence<[Int], Never>(sequence: [1,2,3])
                         .collect(3)
-                        .shouldFinish(expectedValue: [1,2,3])
+                        .whenFinished {
+                            expect($0) == [1,2,3]
+                        }
                         .immediately
                 }
             }
