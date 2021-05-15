@@ -22,9 +22,15 @@ class DataTaskPublisherSpec: QuickSpec {
             }
 
             context("success") {
+                var url: URL!
+                beforeEach {
+                    url = Bundle(for: Self.self)
+                        .bundleURL
+                        .appendingPathComponent("Contents/Info.plist")
+                }
                 itBehavesLike(CombinePublisher.self) {
                     session
-                        .dataTaskPublisher(for: URL(fileURLWithPath: #filePath))
+                        .dataTaskPublisher(for: url)
                         .shouldReceive(numberOfTimes: 1)
                         .before(timeout: 10)
                 }
