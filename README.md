@@ -5,6 +5,8 @@ Quick and Nimble Behaviors
 
 ## Example
 
+See included examples in [Example/Tests](https://github.com/sparta-science/Legible/tree/main/Example/Tests)
+
 ### CombinePublisher
 
 ```
@@ -16,6 +18,7 @@ context("Just value") {
     }
 }
 ```
+from [BehavesLikeCombineSpec](https://github.com/sparta-science/Legible/blob/83f1cfc8fafe26155bf3c9f07cdca290126c9e16/Example/Tests/BehavesLikeCombineSpec.swift#L9-L15)
 
 ### AsciiTable
 ```
@@ -34,8 +37,9 @@ context("add to number to produce result") {
         """
     }
 }
-
 ```
+from [BehavesLikeAsciiTableSpec](https://github.com/sparta-science/Legible/blob/83f1cfc8fafe26155bf3c9f07cdca290126c9e16/Example/Tests/BehavesLikeAsciiTableSpec.swift#L23-L31)
+
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 
