@@ -12,6 +12,7 @@
 		4A81D17A264FB6BF007263F2 /* BehavesLikeCombineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D179264FB6BF007263F2 /* BehavesLikeCombineSpec.swift */; };
 		4A81D17C264FBB95007263F2 /* PublishedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17B264FBB95007263F2 /* PublishedSpec.swift */; };
 		4A81D17E264FBF64007263F2 /* DataTaskPublisherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */; };
+		4A81D180264FE1DD007263F2 /* ObservableObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */; };
 		8178EA24F4805AB1442FD4CB /* Pods_Legible_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CEF7A7D3B4AFD1CDEAFD48 /* Pods_Legible_Tests.framework */; };
 		ED83F68F20348A760038D96B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F68E20348A760038D96B /* Tests.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		4A81D179264FB6BF007263F2 /* BehavesLikeCombineSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehavesLikeCombineSpec.swift; sourceTree = "<group>"; };
 		4A81D17B264FBB95007263F2 /* PublishedSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedSpec.swift; sourceTree = "<group>"; };
 		4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskPublisherSpec.swift; sourceTree = "<group>"; };
+		4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjectSpec.swift; sourceTree = "<group>"; };
 		4E031560367FFF42E85D7A1A /* Legible.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Legible.podspec; path = ../Legible.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ED83F68A20348A760038D96B /* Legible_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Legible_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED83F68E20348A760038D96B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				4A81D177264F9824007263F2 /* FormatterExampleSpec.swift */,
 				4A81D179264FB6BF007263F2 /* BehavesLikeCombineSpec.swift */,
 				4A81D17B264FBB95007263F2 /* PublishedSpec.swift */,
+				4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */,
 				4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */,
 				ED83F69020348A760038D96B /* Info.plist */,
 			);
@@ -233,6 +236,7 @@
 				4A81D17C264FBB95007263F2 /* PublishedSpec.swift in Sources */,
 				4A81D176264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift in Sources */,
 				4A81D17A264FB6BF007263F2 /* BehavesLikeCombineSpec.swift in Sources */,
+				4A81D180264FE1DD007263F2 /* ObservableObjectSpec.swift in Sources */,
 				4A81D178264F9824007263F2 /* FormatterExampleSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
