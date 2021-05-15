@@ -2,9 +2,6 @@
 Quick and Nimble Behaviors
 
 [![XCode Tests](https://github.com/sparta-science/Legible/actions/workflows/xcode-tests.yml/badge.svg)](https://github.com/sparta-science/Legible/actions/workflows/xcode-tests.yml)
-[![Version](https://img.shields.io/cocoapods/v/Legible.svg?style=flat)](https://cocoapods.org/pods/Legible)
-[![License](https://img.shields.io/cocoapods/l/Legible.svg?style=flat)](https://cocoapods.org/pods/Legible)
-[![Platform](https://img.shields.io/cocoapods/p/Legible.svg?style=flat)](https://cocoapods.org/pods/Legible)
 
 ## Example
 
@@ -54,7 +51,8 @@ Legible is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Legible'
+pod 'Legible',
+    :git => 'https://github.com/sparta-science/Legible/'
 ```
 
 ## License
