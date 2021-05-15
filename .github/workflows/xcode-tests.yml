@@ -17,4 +17,4 @@ jobs:
       uses: sersoft-gmbh/xcodebuild-action@v1.3
       with:
         workspace: Example/Legible.xcworkspace
-        scheme: Legible-Example
+        scheme: Tests
