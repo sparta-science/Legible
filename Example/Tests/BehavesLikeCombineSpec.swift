@@ -35,11 +35,20 @@ class BehavesLikeCombineSpec: QuickSpec {
                         .immediately
                 }
             }
-            context("Empty finishes by default") {
-                itBehavesLike(CombinePublisher.self) {
-                    Empty<Any, Never>()
-                        .shouldFinish()
-                        .immediately
+            context("Empty") {
+                context("finishes by default") {
+                    itBehavesLike(CombinePublisher.self) {
+                        Empty<Any, Never>()
+                            .shouldFinish()
+                            .immediately
+                    }
+                }
+                context("never publishes") {
+                    itBehavesLike(CombinePublisher.self) {
+                        Empty<Any, Never>(completeImmediately: false)
+                            .shouldNotReceive()
+                            .immediately
+                    }
                 }
             }
             context("Fail finishes with error") {
