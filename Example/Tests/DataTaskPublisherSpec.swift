@@ -23,15 +23,18 @@ class DataTaskPublisherSpec: QuickSpec {
 
             context("success") {
                 var url: URL!
+                var expectedData: Data!
                 beforeEach {
                     url = Bundle(for: Self.self)
                         .bundleURL
                         .appendingPathComponent("Contents/Info.plist")
+                    expectedData = try! Data(contentsOf: url)
                 }
                 itBehavesLike(CombinePublisher.self) {
                     session
                         .dataTaskPublisher(for: url)
-                        .shouldReceive(numberOfTimes: 1)
+                        .map { $0.data }
+                        .shouldFinish(expectedValue: expectedData)
                         .before(timeout: 10)
                 }
             }
