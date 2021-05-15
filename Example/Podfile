@@ -2,13 +2,7 @@ use_frameworks!
 
 platform :macos, '11.0'
 
-target 'Legible_Example' do
-  pod 'Legible', :path => '../'
-
-  target 'Legible_Tests' do
-    inherit! :search_paths
-
-    pod 'Quick'
-    pod 'Nimble'
-  end
+target 'Legible_Tests' do
+  pod 'Quick'
+  pod 'Nimble'
 end
