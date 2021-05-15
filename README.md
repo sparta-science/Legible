@@ -8,7 +8,40 @@ Quick and Nimble Behaviors
 
 ## Example
 
+### CombinePublisher
+
+```
+context("Just value") {
+    itBehavesLike(CombinePublisher.self) {
+        Just("apple")
+            .shouldFinish(expectedValue: "apple")
+            .immediately
+    }
+}
+```
+
+### AsciiTable
+```
+context("add to number to produce result") {
+    itBehavesLike(AsciiTable.self) {
+        """
+        |-----------------------|
+        |      add integers     |
+        |-----------------------|
+        | number | add | result |
+        |-----------------------|
+        | 1      |  1  |   2    |
+        | -1     |  1  |   0    |
+        | 998    |  2  |  1000  |
+        |-----------------------|
+        """
+    }
+}
+
+```
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+
 
 ## Requirements
 
