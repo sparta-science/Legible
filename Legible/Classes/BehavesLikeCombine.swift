@@ -3,7 +3,7 @@ import Nimble
 import Quick
 import XCTest
 
-struct CombineExpectation {
+public struct CombineExpectation {
     var cancellable: AnyCancellable
     var expectation: XCTestExpectation
 }
@@ -20,7 +20,7 @@ private func expecting(name: String = #function,
                               expectation: expectation)
 }
 
-extension Publisher where Self.Failure: Error {
+public extension Publisher where Self.Failure: Error {
     func shouldFail<T: Error & Equatable>(expectedError: T,
                                           _ execute: (() -> Void)? = nil,
                                           file: String = #file,
@@ -38,7 +38,7 @@ extension Publisher where Self.Failure: Error {
         }
     }
 }
-extension Publisher where Self.Output: Equatable {
+public extension Publisher where Self.Output: Equatable {
     func shouldFinish(expectedValue: Output,
                       _ execute: (() -> Void)? = nil,
                       file: String = #file,
@@ -68,7 +68,7 @@ extension Publisher where Self.Output: Equatable {
     }
 }
 
-extension Publisher {
+public extension Publisher {
     func shouldFinish(_ execute: (() -> Void)? = nil) -> CombineExpectation {
         expecting { expectation in
             sink(receiveCompletion: { completion in
@@ -128,7 +128,7 @@ public struct CombineAction {
     var timeout: TimeInterval
 }
 
-extension CombineExpectation {
+public extension CombineExpectation {
     var immediately: CombineAction {
         before(timeout: 0)
     }
