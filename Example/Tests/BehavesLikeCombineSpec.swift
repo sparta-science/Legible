@@ -52,6 +52,14 @@ class BehavesLikeCombineSpec: QuickSpec {
                         .immediately
                 }
             }
+            context("Sequence publishes all by one and finishes") {
+                itBehavesLike(CombinePublisher.self) {
+                    Publishers.Sequence<[Int], Never>(sequence: [1,2,3])
+                        .collect(3)
+                        .shouldFinish(expectedValue: [1,2,3])
+                        .immediately
+                }
+            }
         }
     }
 }
