@@ -5,4 +5,5 @@ platform :macos, '11.0'
 target 'Legible_Tests' do
   pod 'Quick'
   pod 'Nimble'
+  pod 'Legible', :path => '../'
 end
