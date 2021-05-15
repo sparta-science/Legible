@@ -24,12 +24,14 @@ class FormatterExampleSpec: QuickSpec {
                     var subject: MyFormatter!
 
                     beforeEach {
-                    }
-                    it("should format in base units") {
                         let locale = aContext()["locale"] as! String
                         let style = aContext()["style"] as! String
                         subject = MyFormatter(locale: locale, style: style)
-
+                    }
+                    it("should match metric system") {
+                        expect(subject.locale.usesMetricSystem) == (aContext()["metric"] as! Bool)
+                    }
+                    it("should format in base units") {
                         let massUnits: [UnitMass] = [.grams, .kilograms, .pounds, .milligrams, .metricTons]
                         let value = aContext()["value"] as! Double
                         let symbol = aContext()["unit"] as! String
@@ -46,23 +48,22 @@ class FormatterExampleSpec: QuickSpec {
                     context("should produce expected string") {
                         itBehavesLike(AsciiTable.self) {
                             """
-                            |------------------------------------------------|
-                            |          formatted measuments                  |
-                            |------------------------------------------------|
-                            | locale | style | value  | unit | expected      |
-                            |------------------------------------------------|
-                            | en_US  | long  | 10.0   | kg   | 22 pounds     |
-                            | en_AU  | short | 130000 | mg   | 0.1kg         |
-                            | en_UK  | short | 2.7    | t    | 2,700 kg      |
-                            | ru     | medium| 13001  | g    | 13 кг         |
-                            | jp     | long  | 5.1    | lb   | 2.3 kilograms |
-                            | he     | long  | 510    | g    | 0.5 קילוגרם   |
-                            |------------------------------------------------|
+                            |------------------------------------------------------|
+                            |              formatted measuments                    |
+                            |------------------------------------------------------|
+                            | locale|metric| style | value  | unit | expected      |
+                            |------------------------------------------------------|
+                            | en_US |false | long  | 10.0   | kg   | 22 pounds     |
+                            | en_AU |true  | short | 130000 | mg   | 0.1kg         |
+                            | en_UK |true  | short | 2.7    | t    | 2,700 kg      |
+                            | ru    |true  | medium| 13001  | g    | 13 кг         |
+                            | jp    |true  | long  | 5.1    | lb   | 2.3 kilograms |
+                            | he    |true  | long  | 510    | g    | 0.5 קילוגרם   |
+                            |------------------------------------------------------|
                             """
                         }
                     }
                 }
-
             }
         }
     }
