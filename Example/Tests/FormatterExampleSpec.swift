@@ -48,19 +48,19 @@ class FormatterExampleSpec: QuickSpec {
                     context("should produce expected string") {
                         itBehavesLike(AsciiTable.self) {
                             """
-                            |------------------------------------------------------|
-                            |              formatted measuments                    |
-                            |------------------------------------------------------|
-                            | locale|metric| style | value  | unit | expected      |
-                            |------------------------------------------------------|
-                            | en_US |false | long  | 10.0   | kg   | 22 pounds     |
-                            | en_AU |true  | short | 130000 | mg   | 0.1kg         |
-                            | en_UK |true  | short | 2.7    | t    | 2,700 kg      |
-                            | ru    |true  | medium| 13001  | g    | 13 кг         |
-                            | jp    |true  | long  | 5.1    | lb   | 2.3 kilograms |
-                            | he    |true  | long  | 510    | g    | 0.5 קילוגרם   |
-                            |------------------------------------------------------|
-                            """
+            |------------------------------------------------------|
+            |              formatted measuments                    |
+            |------------------------------------------------------|
+            | locale|metric| style | value  | unit | expected      |
+            |------------------------------------------------------|
+            | en_US |false | long  | 10.0   | kg   | 22 pounds     |
+            | en_AU |true  | short | 130000 | mg   | 0.1kg         |
+            | en_UK |true  | short | 2.7    | t    | 2,700 kg      |
+            | ru    |true  | medium| 13001  | g    | 13 кг         |
+            | jp    |true  | long  | 5.1    | lb   | 2.3 kilograms |
+            | he    |true  | long  | 510    | g    | 0.5 קילוגרם   |
+            |------------------------------------------------------|
+            """
                         }
                     }
                 }
