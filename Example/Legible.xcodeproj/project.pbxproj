@@ -523,7 +523,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F551AFD48E8A0565FAA313FA /* Pods-Legible_Tests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -531,7 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Legible-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Legible_Example.app/Contents/MacOS/Legible_Example";
 			};
 			name = Debug;
 		};
@@ -539,7 +538,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 020537CDB58AA297DCFFA042 /* Pods-Legible_Tests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -547,7 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Legible-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Legible_Example.app/Contents/MacOS/Legible_Example";
 			};
 			name = Release;
 		};
