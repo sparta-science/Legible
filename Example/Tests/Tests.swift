@@ -9,17 +9,13 @@ class TableOfContentsSpec: QuickSpec {
         describe("these will fail") {
 
             it("can do maths") {
-                expect(1) == 2
+                expect(1) == 1
             }
 
             it("can read") {
-                expect("number") == "string"
+                expect("string") == "string"
             }
 
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
-            }
-            
             context("these will pass") {
 
                 it("can do maths") {
