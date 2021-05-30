@@ -43,6 +43,7 @@ class SwiftUISpec: QuickSpec {
                 context("with window") {
                     var window: NSWindow!
                     beforeEach {
+                        NSApp.appearance = .init(named: .darkAqua)
                         window = StandardScaleWindow()
                         window.colorSpace = .sRGB
                         window.contentView = subject
@@ -55,7 +56,7 @@ class SwiftUISpec: QuickSpec {
                         expect(bitmap.colorSpace) == .sRGB
                         var colors = [Int](repeating: .min, count: 4)
                         bitmap.getPixel(&colors, atX: 0, y: 0)
-                        expect(colors) == [40, 205, 65, 255]
+                        expect(colors) == [50, 215, 75, 255]
                         let pngData = bitmap.representation(using: .png, properties: [:])!
                         expect(pngData).to(haveCount(169))
                         try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-in-window.png"))
