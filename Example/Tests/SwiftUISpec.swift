@@ -42,7 +42,7 @@ class SwiftUISpec: QuickSpec {
                 context("with window") {
                     var window: NSWindow!
                     beforeEach {
-                        NSApp.appearance = .init(named: .darkAqua)
+                        NSApp.appearance = .init(named: .darkAqua)!
                         window = StandardScaleWindow()
                         window.colorSpace = .sRGB
                         window.contentView = subject
