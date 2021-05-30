@@ -34,14 +34,26 @@ class SwiftUISpec: QuickSpec {
                     frame = NSRect(origin: .zero, size: subject.intrinsicContentSize)
                 }
                 context("without window") {
-                    it("bitmap should be nil") {
-                        let scale = NSScreen.main!.backingScaleFactor
+                    it("should use generic color space") {
                         let bitmap = subject.bitmapImageRepForCachingDisplay(in: frame)!
                         subject.cacheDisplay(in: frame, to: bitmap)
-                        expect(bitmap.pixelsWide) == 200
+                        expect(bitmap.pixelsWide) == Int(NSScreen.main!.backingScaleFactor) * 100
                         expect(bitmap.size) == NSSize(width: 100, height: 1)
+                        expect(bitmap.colorSpace) == .genericRGB
+                        var colors = [Int](arrayLiteral: 0,0,0,0)
+                        bitmap.getPixel(&colors, atX: 0, y: 0)
+
+                        let color = bitmap.colorAt(x: 0, y: 0)!
+                        expect(color.colorSpace) == .genericRGB
+                        expect(color.type) == .componentBased
+                        expect(color.redComponent) ≈ 0.1882
+                        expect(color.greenComponent) ≈ 0.8274
+                        expect(color.blueComponent) ≈ 0.2313
+
                         let pngData = bitmap.representation(using: .png, properties: [:])!
-                        try! pngData.write(to: URL(fileURLWithPath: "/tmp/no-window.png"))
+
+
+                        try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-with-no-window.png"))
                         expect(pngData).to(haveCount(1288))
                     }
                 }
@@ -49,20 +61,25 @@ class SwiftUISpec: QuickSpec {
                     var window: NSWindow!
                     beforeEach {
                         window = NSWindow()
+                        window.colorSpace = .sRGB
                         window.contentView = subject
                     }
-                    it("should be rendered to png") {
+                    it("should use windows's color space") {
                         window.contentView = subject
-                        expect(window.backingScaleFactor) == 2
                         let bitmap = subject.bitmapImageRepForCachingDisplay(in: frame)!
                         expect(bitmap).notTo(beNil())
                         subject.cacheDisplay(in: frame, to: bitmap)
-                        expect(bitmap.pixelsWide) == 200
-                        expect(bitmap.pixelsHigh) == 2
-                        expect(bitmap.size) == NSSize(width: 100, height: 1)
+                        expect(bitmap.colorSpace) == .sRGB
+                        let color = bitmap.colorAt(x: 0, y: 0)!
+                        expect(color.colorSpace) == .genericRGB
+                        expect(color.type) == .componentBased
+                        expect(color.redComponent) ≈ 0.1960
+                        expect(color.greenComponent) ≈ 0.8431
+                        expect(color.blueComponent) ≈ 0.2941
+
                         let pngData = bitmap.representation(using: .png, properties: [:])!
                         expect(pngData).to(haveCount(259))
-                        try! pngData.write(to: URL(fileURLWithPath: "/tmp/view.png"))
+                        try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-in-window.png"))
                     }
                 }
             }
