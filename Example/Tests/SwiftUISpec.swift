@@ -23,6 +23,13 @@ public struct HDivider_Previews: PreviewProvider {
 }
 #endif
 
+class StandardScaleWindow: NSWindow {
+    override var backingScaleFactor: CGFloat {
+        1
+    }
+}
+
+
 class SwiftUISpec: QuickSpec {
     override func spec() {
         describe("HDivider") {
@@ -33,34 +40,10 @@ class SwiftUISpec: QuickSpec {
                     subject = NSHostingView(rootView: HDivider_Previews.previews)
                     frame = NSRect(origin: .zero, size: subject.intrinsicContentSize)
                 }
-                context("without window") {
-                    it("should use generic color space") {
-                        let bitmap = subject.bitmapImageRepForCachingDisplay(in: frame)!
-                        subject.cacheDisplay(in: frame, to: bitmap)
-                        expect(bitmap.pixelsWide) == Int(NSScreen.main!.backingScaleFactor) * 100
-                        expect(bitmap.size) == NSSize(width: 100, height: 1)
-                        expect(bitmap.colorSpace) == .genericRGB
-                        var colors = [Int](arrayLiteral: 0,0,0,0)
-                        bitmap.getPixel(&colors, atX: 0, y: 0)
-
-                        let color = bitmap.colorAt(x: 0, y: 0)!
-                        expect(color.colorSpace) == .genericRGB
-                        expect(color.type) == .componentBased
-                        expect(color.redComponent) ≈ 0.1882
-                        expect(color.greenComponent) ≈ 0.8274
-                        expect(color.blueComponent) ≈ 0.2313
-
-                        let pngData = bitmap.representation(using: .png, properties: [:])!
-
-
-                        try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-with-no-window.png"))
-                        expect(pngData).to(haveCount(1288))
-                    }
-                }
                 context("with window") {
                     var window: NSWindow!
                     beforeEach {
-                        window = NSWindow()
+                        window = StandardScaleWindow()
                         window.colorSpace = .sRGB
                         window.contentView = subject
                     }
@@ -70,15 +53,12 @@ class SwiftUISpec: QuickSpec {
                         expect(bitmap).notTo(beNil())
                         subject.cacheDisplay(in: frame, to: bitmap)
                         expect(bitmap.colorSpace) == .sRGB
-                        let color = bitmap.colorAt(x: 0, y: 0)!
-                        expect(color.colorSpace) == .genericRGB
-                        expect(color.type) == .componentBased
-                        expect(color.redComponent) ≈ 0.1960
-                        expect(color.greenComponent) ≈ 0.8431
-                        expect(color.blueComponent) ≈ 0.2941
+                        var colors = [0, 0, 0, 0]
+                        bitmap.getPixel(&colors, atX: 0, y: 0)
+                        expect(colors) == [50, 215, 75, 255]
 
                         let pngData = bitmap.representation(using: .png, properties: [:])!
-                        expect(pngData).to(haveCount(259))
+                        expect(pngData).to(haveCount(169))
                         try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-in-window.png"))
                     }
                 }
