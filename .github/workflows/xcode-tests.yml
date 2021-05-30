@@ -19,17 +19,13 @@ jobs:
         scheme: Tests
         result-bundle-path: test-results/unit-specs
         build-settings: -test-timeouts-enabled YES
-    - name: Save latest crash report
+    - name: Save crash reports created since test-results
       if: failure()
-      run: |
-        report=$(ls -tr ~/Library/Logs/DiagnosticReports/ | tail -1)
-        cp ~/Library/Logs/DiagnosticReports/${report} ./test-results || true
-    - name: Archive results # due to: https://github.com/actions/upload-artifact/issues/76
-      if: always()
-      run: zip -FSry results.zip test-results || true
+      run: find ~/Library/Logs/DiagnosticReports/*.crash -newerBB ./test-results
+        -exec cp {} ./test-results \; || true
     - name: Upload test results
       if: always()
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: test-results
-        path: results.zip
+        path: test-results
