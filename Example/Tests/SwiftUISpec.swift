@@ -53,13 +53,9 @@ class SwiftUISpec: QuickSpec {
                         expect(bitmap).notTo(beNil())
                         subject.cacheDisplay(in: frame, to: bitmap)
                         expect(bitmap.colorSpace) == .sRGB
-                        var colors = [0, 0, 0, 0]
+                        var colors = [Int](repeating: .min, count: 4)
                         bitmap.getPixel(&colors, atX: 0, y: 0)
-                        if ProcessInfo.processInfo.environment["CI"] != nil {
-                            expect(colors) == [40, 205, 65, 255]
-                        } else {
-                            expect(colors) == [50, 215, 75, 255]
-                        }
+                        expect(colors) == [40, 205, 65, 255]
                         let pngData = bitmap.representation(using: .png, properties: [:])!
                         expect(pngData).to(haveCount(169))
                         try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-in-window.png"))
