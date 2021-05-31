@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4A46D19B2663360F00902F68 /* SwiftUISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D19A2663360F00902F68 /* SwiftUISpec.swift */; };
+		4A46D19D2664C99400902F68 /* StandardScaleWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D19C2664C99400902F68 /* StandardScaleWindow.swift */; };
+		4A46D19F2664C9B800902F68 /* HDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D19E2664C9B800902F68 /* HDivider.swift */; };
+		4A46D1A12664C9D100902F68 /* MatchingSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D1A02664C9D100902F68 /* MatchingSnapshot.swift */; };
 		4A81D176264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D175264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift */; };
 		4A81D178264F9824007263F2 /* FormatterExampleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D177264F9824007263F2 /* FormatterExampleSpec.swift */; };
 		4A81D17A264FB6BF007263F2 /* BehavesLikeCombineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D179264FB6BF007263F2 /* BehavesLikeCombineSpec.swift */; };
@@ -24,6 +27,9 @@
 		320A755D9477A8A39989C6AF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		43CEF7A7D3B4AFD1CDEAFD48 /* Pods_Legible_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Legible_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A46D19A2663360F00902F68 /* SwiftUISpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISpec.swift; sourceTree = "<group>"; };
+		4A46D19C2664C99400902F68 /* StandardScaleWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardScaleWindow.swift; sourceTree = "<group>"; };
+		4A46D19E2664C9B800902F68 /* HDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDivider.swift; sourceTree = "<group>"; };
+		4A46D1A02664C9D100902F68 /* MatchingSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSnapshot.swift; sourceTree = "<group>"; };
 		4A81D172264F8287007263F2 /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = ../.github/workflows; sourceTree = "<group>"; };
 		4A81D175264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehavesLikeAsciiTableSpec.swift; sourceTree = "<group>"; };
 		4A81D177264F9824007263F2 /* FormatterExampleSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterExampleSpec.swift; sourceTree = "<group>"; };
@@ -97,6 +103,9 @@
 				4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */,
 				4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */,
 				4A46D19A2663360F00902F68 /* SwiftUISpec.swift */,
+				4A46D1A02664C9D100902F68 /* MatchingSnapshot.swift */,
+				4A46D19E2664C9B800902F68 /* HDivider.swift */,
+				4A46D19C2664C99400902F68 /* StandardScaleWindow.swift */,
 				ED83F69020348A760038D96B /* Info.plist */,
 			);
 			path = Tests;
@@ -235,8 +244,11 @@
 				4A81D17E264FBF64007263F2 /* DataTaskPublisherSpec.swift in Sources */,
 				4A81D17C264FBB95007263F2 /* PublishedSpec.swift in Sources */,
 				4A81D176264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift in Sources */,
+				4A46D1A12664C9D100902F68 /* MatchingSnapshot.swift in Sources */,
 				4A81D17A264FB6BF007263F2 /* BehavesLikeCombineSpec.swift in Sources */,
+				4A46D19D2664C99400902F68 /* StandardScaleWindow.swift in Sources */,
 				4A81D180264FE1DD007263F2 /* ObservableObjectSpec.swift in Sources */,
+				4A46D19F2664C9B800902F68 /* HDivider.swift in Sources */,
 				4A81D178264F9824007263F2 /* FormatterExampleSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

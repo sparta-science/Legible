@@ -3,32 +3,6 @@ import Quick
 import Legible
 import SwiftUI
 
-struct HDivider: View {
-    let color: Color
-
-    var body: some View {
-        Rectangle()
-            .fill(color)
-            .frame(height: 1)
-    }
-}
-
-#if DEBUG
-public struct HDivider_Previews: PreviewProvider {
-    public static var previews: some View {
-        HDivider(color: .green)
-            .frame(width: 100)
-    }
-}
-#endif
-
-class StandardScaleWindow: NSWindow {
-    override var backingScaleFactor: CGFloat {
-        1
-    }
-}
-
-
 class SwiftUISpec: QuickSpec {
     override func spec() {
         describe("HDivider") {
@@ -38,6 +12,9 @@ class SwiftUISpec: QuickSpec {
                 beforeEach {
                     subject = NSHostingView(rootView: HDivider_Previews.previews)
                     frame = NSRect(origin: .zero, size: subject.intrinsicContentSize)
+                }
+                itBehavesLike(MatchingSnapshot.self) {
+                    HDivider_Previews.previews
                 }
                 context("with window") {
                     var window: NSWindow!
