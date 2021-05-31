@@ -14,7 +14,7 @@ class SwiftUISpec: QuickSpec {
                     frame = NSRect(origin: .zero, size: subject.intrinsicContentSize)
                 }
                 itBehavesLike(MatchingSnapshot.self) {
-                    HDivider_Previews.previews
+                    Preview<HDivider_Previews>()
                 }
                 context("with window") {
                     var window: NSWindow!
