@@ -16,6 +16,9 @@ class SwiftUISpec: QuickSpec {
                 itBehavesLike(MatchingSnapshot.self) {
                     Preview<HDivider_Previews>()
                 }
+                itBehavesLike(MatchingSnapshot.self) {
+                    SomeView(EmptyView(), name: "AnyView")
+                }
                 context("with window") {
                     var window: NSWindow!
                     beforeEach {
