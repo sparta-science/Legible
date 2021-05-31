@@ -24,7 +24,7 @@ protocol Snapshotting {
     var size: NSSize? { get }
 }
 
-struct SomeView {
+struct SwiftUIView {
     let name: String
     let view: NSView
     let size: NSSize?
@@ -36,10 +36,11 @@ struct SomeView {
     }
 }
 
-extension SomeView: Snapshotting {}
+extension SwiftUIView: Snapshotting {}
 
 class MatchingSnapshot: Behavior<Snapshotting> {
-    static var appearanceName: NSAppearance.Name?
+    static var appearanceName = NSAppearance.Name.darkAqua
+    static var windowScale = 2
     override class var name: String {
         "Snapshot for \(Snapshotting.self)"
     }
@@ -58,15 +59,16 @@ class MatchingSnapshot: Behavior<Snapshotting> {
                 .appendingPathExtension("png")
 
             subject = aContext().view
-            NSApp.appearance = .init(named: Self.appearanceName ?? .darkAqua)!
-            window = StandardScaleWindow()
+            NSApp.appearance = .init(named: appearanceName)!
+            window = StandardScaleWindow(scale: windowScale)
             window.colorSpace = .sRGB
             window.contentView = subject
-            size = aContext().size ?? subject.intrinsicContentSize
+            size = aContext().size ?? subject.fittingSize
         }
 
         it("should match snapshot") {
             let frame = NSRect(origin: .zero, size: size)
+            subject.frame = frame
             let bitmap: NSBitmapImageRep! = subject.bitmapImageRepForCachingDisplay(in: frame)
             expect(bitmap).notTo(beNil())
             subject.cacheDisplay(in: frame, to: bitmap)

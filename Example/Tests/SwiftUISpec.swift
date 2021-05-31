@@ -16,14 +16,23 @@ class SwiftUISpec: QuickSpec {
                 itBehavesLike(MatchingSnapshot.self) {
                     Preview<HDivider_Previews>()
                 }
+                fitBehavesLike(MatchingSnapshot.self) {
+                    SwiftUIView(
+                        Group{
+                            Text("Hello, ").foregroundColor(.yellow)
+                            Text("world!").foregroundColor(.green)
+                        }.background(Color.black),
+                        name: "HelloWorld"
+                    )
+                }
                 itBehavesLike(MatchingSnapshot.self) {
-                    SomeView(EmptyView(), name: "AnyView")
+                    Preview<AvatarView_Previews>()
                 }
                 context("with window") {
                     var window: NSWindow!
                     beforeEach {
                         NSApp.appearance = .init(named: .darkAqua)!
-                        window = StandardScaleWindow()
+                        window = StandardScaleWindow(scale: 2)
                         window.colorSpace = .sRGB
                         window.contentView = subject
                     }
@@ -42,7 +51,7 @@ class SwiftUISpec: QuickSpec {
                             attachment.lifetime = .keepAlways
                             $0.add(attachment)
                         }
-                        expect(pngData).to(haveCount(169))
+                        expect(pngData).to(haveCount(259))
                         try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-in-window.png"))
                     }
                 }
