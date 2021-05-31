@@ -16,7 +16,7 @@ class SwiftUISpec: QuickSpec {
                 itBehavesLike(MatchingSnapshot.self) {
                     Preview<HDivider_Previews>()
                 }
-                fitBehavesLike(MatchingSnapshot.self) {
+                itBehavesLike(MatchingSnapshot.self) {
                     SwiftUIView(
                         Group{
                             Text("Hello, ").foregroundColor(.yellow)
