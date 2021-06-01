@@ -1,8 +1,8 @@
 import AppKit
 
-class StandardScaleWindow: NSWindow {
+public class StandardScaleWindow: NSWindow {
     var scale: Int = 2
-    init(scale: Int) {
+    public init(scale: Int) {
         self.scale = scale
         super.init(
             contentRect: .init(
@@ -17,7 +17,7 @@ class StandardScaleWindow: NSWindow {
             defer: true
         )
     }
-    override var backingScaleFactor: CGFloat {
+    override public var backingScaleFactor: CGFloat {
         .init(scale)
     }
 }
