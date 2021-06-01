@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Legible'
-  s.version          = '0.1.1'
+  s.version          = '0.1.0'
   s.summary          = 'Quick and Nimble Behaviors and Helpers'
   s.description      = <<-DESC
 Set of Quick and Nimble Behaviors and Helpers
@@ -12,7 +12,7 @@ to make spec more readable
   s.author           = { 'sparta-science' => 'www.spartascience.com' }
   s.source           = {
       :git => 'https://github.com/sparta-science/Legible.git',
-      :branch => 'swift-ui'
+      :tag => s.version.to_s
   }
 
   s.ios.deployment_target = '9.0'
