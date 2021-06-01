@@ -14,9 +14,22 @@ func diff(_ old: NSImage, _ new: NSImage) -> NSImage {
     let differenceFilter = CIFilter.differenceBlendMode()
     differenceFilter.inputImage = oldCiImage
     differenceFilter.backgroundImage = newCiImage
-    let unionSize = CGRect(origin: .zero, size: old.size)
+    let unionRect = CGRect(origin: .zero, size: old.size)
         .union(.init(origin: .zero, size: new.size))
-        .size
+    let unionSize = unionRect.size
+
+    let hist = CIFilter.areaHistogram()
+    hist.inputImage = differenceFilter.outputImage
+    hist.setValue(CIVector(cgRect: unionRect), forKey: kCIInputExtentKey)
+    let data: Data! = hist.value(forKey: "outputData") as? Data
+    try! data.write(to: .init(fileURLWithPath: "/tmp/out.bin"))
+    let count = data.count / MemoryLayout<UInt32>.stride
+    let result: [UInt32] = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
+        let pointer = bytes.bindMemory(to: UInt32.self)
+        return Array(UnsafeBufferPointer(start: pointer.baseAddress, count: count))
+    }
+    print(result)
+
     let rep = NSCIImageRep(ciImage: differenceFilter.outputImage!)
     let difference = NSImage(size: unionSize)
     difference.addRepresentation(rep)
@@ -36,7 +49,7 @@ func significantlyDifferentImages(_ left: Data, _ right: CGImage) -> Bool {
     let leftPixels = floatPixels(&leftBuffer)
     let rightPixels = floatPixels(&rightBuffer)
     let difference = vDSP.subtract(leftPixels, rightPixels)
-    return vDSP.maximumMagnitude(difference) > 10 ||
+    return vDSP.maximumMagnitude(difference) > 1 ||
         vDSP.rootMeanSquare(difference) > 0.5
 }
 
