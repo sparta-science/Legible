@@ -2,12 +2,12 @@ import Quick
 import Nimble
 import SwiftUI
 
-class MatchingSnapshot: Behavior<Snapshotting> {
+public class MatchingSnapshot: Behavior<Snapshotting> {
     static var appearanceName = NSAppearance.Name.darkAqua
     static var windowScale = 2
     static var snapshotsFolderUrl: URL?
 
-    override class func spec(_ aContext: @escaping () -> Snapshotting) {
+    public override class func spec(_ aContext: @escaping () -> Snapshotting) {
         var snapshotUrl: URL!
         var window: NSWindow!
         var subject: NSView!
