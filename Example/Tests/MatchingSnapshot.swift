@@ -5,32 +5,37 @@ import SwiftUI
 class MatchingSnapshot: Behavior<Snapshotting> {
     static var appearanceName = NSAppearance.Name.darkAqua
     static var windowScale = 2
-    override class var name: String {
-        "Snapshot for \(Snapshotting.self)"
-    }
+    static var snapshotsFolderUrl: URL?
+
     override class func spec(_ aContext: @escaping () -> Snapshotting) {
         var snapshotUrl: URL!
         var window: NSWindow!
         var subject: NSView!
         var size: NSSize!
+        var previousAppearance: NSAppearance?
         beforeEach {
-            let specUrl = URL(fileURLWithPath: $0.example.callsite.file)
-            let snapshotsFolder = specUrl
+            let exampleFileUrl = URL(fileURLWithPath: $0.example.callsite.file)
+            let snapshotsFolder = exampleFileUrl
                 .deletingLastPathComponent()
                 .appendingPathComponent("Snapshots")
-            snapshotUrl = snapshotsFolder
+            snapshotUrl = (snapshotsFolderUrl ?? snapshotsFolder)
                 .appendingPathComponent(aContext().name)
                 .appendingPathExtension("png")
 
             subject = aContext().view
+            previousAppearance = NSApp.appearance
             NSApp.appearance = .init(named: appearanceName)!
             window = StandardScaleWindow(scale: windowScale)
             window.colorSpace = .sRGB
             window.contentView = subject
             size = aContext().size ?? subject.fittingSize
         }
+        
+        afterEach {
+            NSApp.appearance = previousAppearance
+        }
 
-        it("should match snapshot") {
+        it(aContext().name + " should match snapshot") {
             let frame = NSRect(origin: .zero, size: size)
             subject.frame = frame
             let bitmap: NSBitmapImageRep! = subject.bitmapImageRepForCachingDisplay(in: frame)
