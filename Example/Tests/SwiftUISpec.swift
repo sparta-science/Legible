@@ -13,21 +13,6 @@ class SwiftUISpec: QuickSpec {
                     subject = NSHostingView(rootView: HDivider_Previews.previews)
                     frame = NSRect(origin: .zero, size: subject.intrinsicContentSize)
                 }
-                itBehavesLike(MatchingSnapshot.self) {
-                    Preview<HDivider_Previews>()
-                }
-                itBehavesLike(MatchingSnapshot.self) {
-                    SwiftUIView(
-                        Group{
-                            Text("Hello, ").foregroundColor(.yellow)
-                            Text("world!").foregroundColor(.green)
-                        }.background(Color.black),
-                        name: "HelloWorld"
-                    )
-                }
-                itBehavesLike(MatchingSnapshot.self) {
-                    Preview<AvatarView_Previews>()
-                }
                 context("with window") {
                     var window: NSWindow!
                     beforeEach {
