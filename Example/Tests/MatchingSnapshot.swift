@@ -57,8 +57,10 @@ class MatchingSnapshot: Behavior<Snapshotting> {
                     existing.name = "expected-" + aContext().name
                     $0.add(existing)
                     if existingPng != pngData {
-                        try! pngData.write(to: snapshotUrl)
-                        fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
+                        if significantlyDifferentImages(existingPng, pngData) {
+                            try! pngData.write(to: snapshotUrl)
+                            fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
+                        }
                     }
                 } else {
                     try! pngData.write(to: snapshotUrl)
