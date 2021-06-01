@@ -59,6 +59,10 @@ class MatchingSnapshot: Behavior<Snapshotting> {
                     if existingPng != pngData {
                         // TODO: fail when bitmap.cgImage is nil
                         if significantlyDifferentImages(existingPng, bitmap.cgImage!) {
+                            let diffImage = diff(existingPng, bitmap.cgImage!, size: frame.size)
+                            let diffAttachment = XCTAttachment(image: diffImage)
+                            diffAttachment.name = "diff-" + aContext().name
+                            $0.add(diffAttachment)
                             // TODO: extract to write failure
                             try! pngData.write(to: snapshotUrl)
                             fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
