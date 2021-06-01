@@ -1,6 +1,7 @@
 import AppKit
 import Accelerate
 import CoreImage
+import CoreImage.CIFilterBuiltins
 
 func diff(_ old: Data, _ new: CGImage, size: NSSize) -> NSImage {
     diff(NSImage(data: old)!, NSImage(cgImage: new, size: size))
@@ -10,15 +11,14 @@ func diff(_ old: Data, _ new: CGImage, size: NSSize) -> NSImage {
 func diff(_ old: NSImage, _ new: NSImage) -> NSImage {
     let oldCiImage = CIImage(cgImage: old.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
     let newCiImage = CIImage(cgImage: new.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
-    let differenceFilter = CIFilter(name: "CIDifferenceBlendMode")!
-    differenceFilter.setValue(oldCiImage, forKey: kCIInputImageKey)
-    differenceFilter.setValue(newCiImage, forKey: kCIInputBackgroundImageKey)
-    let maxSize = CGSize(
-        width: max(old.size.width, new.size.width),
-        height: max(old.size.height, new.size.height)
-    )
+    let differenceFilter = CIFilter.differenceBlendMode()
+    differenceFilter.inputImage = oldCiImage
+    differenceFilter.backgroundImage = newCiImage
+    let unionSize = CGRect(origin: .zero, size: old.size)
+        .union(.init(origin: .zero, size: new.size))
+        .size
     let rep = NSCIImageRep(ciImage: differenceFilter.outputImage!)
-    let difference = NSImage(size: maxSize)
+    let difference = NSImage(size: unionSize)
     difference.addRepresentation(rep)
     return difference
 }
@@ -29,6 +29,9 @@ func significantlyDifferentImages(_ left: Data, _ right: CGImage) -> Bool {
     defer {
         leftBuffer.free()
         rightBuffer.free()
+    }
+    guard leftBuffer.height == rightBuffer.height, leftBuffer.width == rightBuffer.width else {
+        return true
     }
     let leftPixels = floatPixels(&leftBuffer)
     let rightPixels = floatPixels(&rightBuffer)
