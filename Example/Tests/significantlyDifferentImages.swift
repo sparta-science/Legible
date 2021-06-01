@@ -49,7 +49,7 @@ func significantlyDifferentImages(_ left: Data, _ right: CGImage) -> Bool {
     let leftPixels = floatPixels(&leftBuffer)
     let rightPixels = floatPixels(&rightBuffer)
     let difference = vDSP.subtract(leftPixels, rightPixels)
-    return vDSP.maximumMagnitude(difference) > 1 ||
+    return vDSP.maximumMagnitude(difference) > 4 ||
         vDSP.rootMeanSquare(difference) > 0.5
 }
 
