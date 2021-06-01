@@ -57,7 +57,9 @@ class MatchingSnapshot: Behavior<Snapshotting> {
                     existing.name = "expected-" + aContext().name
                     $0.add(existing)
                     if existingPng != pngData {
-                        if significantlyDifferentImages(existingPng, pngData) {
+                        // TODO: fail when bitmap.cgImage is nil
+                        if significantlyDifferentImages(existingPng, bitmap.cgImage!) {
+                            // TODO: extract to write failure
                             try! pngData.write(to: snapshotUrl)
                             fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
                         }
