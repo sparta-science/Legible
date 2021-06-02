@@ -22,7 +22,7 @@ func diff(_ old: NSImage, _ new: NSImage) -> NSImage {
     hist.inputImage = differenceFilter.outputImage
     hist.setValue(CIVector(cgRect: unionRect), forKey: kCIInputExtentKey)
     let data: Data! = hist.value(forKey: "outputData") as? Data
-    try! data.write(to: .init(fileURLWithPath: "/tmp/out.bin"))
+    try? data.write(to: .init(fileURLWithPath: "/tmp/areaHistogram.data"))
     let count = data.count / MemoryLayout<UInt32>.stride
     let result: [UInt32] = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
         let pointer = bytes.bindMemory(to: UInt32.self)
