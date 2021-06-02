@@ -2,39 +2,42 @@ import Quick
 import Nimble
 import SwiftUI
 
+public class SnapshotConfiguration {
+    public var windowScale = 1
+    public var snapshotsFolderUrl: URL?
+
+    public func folderUrl(testFile: URL) -> URL {
+        if let configured = snapshotsFolderUrl {
+            return configured
+        }
+        return testFile
+            .deletingLastPathComponent()
+            .appendingPathComponent("Snapshots")
+    }
+}
+
 public class MatchingSnapshot: Behavior<Snapshotting> {
-    static var appearanceName = NSAppearance.Name.darkAqua
-    static var windowScale = 2
-    static var snapshotsFolderUrl: URL?
+    public static var configuration = SnapshotConfiguration()
 
     public override class func spec(_ aContext: @escaping () -> Snapshotting) {
         var snapshotUrl: URL!
         var window: NSWindow!
         var subject: NSView!
         var size: NSSize!
-        var previousAppearance: NSAppearance?
         beforeEach {
             let exampleFileUrl = URL(fileURLWithPath: $0.example.callsite.file)
-            let snapshotsFolder = exampleFileUrl
-                .deletingLastPathComponent()
-                .appendingPathComponent("Snapshots")
-            snapshotUrl = (snapshotsFolderUrl ?? snapshotsFolder)
+            snapshotUrl = Self.configuration
+                .folderUrl(testFile: exampleFileUrl)
                 .appendingPathComponent(aContext().name)
                 .appendingPathExtension("png")
 
             subject = aContext().view
-            previousAppearance = NSApp.appearance
-            NSApp.appearance = .init(named: appearanceName)!
-            window = StandardScaleWindow(scale: windowScale)
+            window = StandardScaleWindow(scale: Self.configuration.windowScale)
             window.colorSpace = .sRGB
             window.contentView = subject
             size = aContext().size ?? subject.fittingSize
         }
         
-        afterEach {
-            NSApp.appearance = previousAppearance
-        }
-
         it(aContext().name + " should match snapshot") {
             let frame = NSRect(origin: .zero, size: size)
             subject.frame = frame
