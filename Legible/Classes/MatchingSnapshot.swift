@@ -24,21 +24,22 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
         var window: NSWindow!
         var subject: NSView!
         var size: NSSize!
+        let snapshotting: Snapshotting = aContext()
         beforeEach {
             let exampleFileUrl = URL(fileURLWithPath: $0.example.callsite.file)
             snapshotUrl = Self.configuration
                 .folderUrl(testFile: exampleFileUrl)
-                .appendingPathComponent(aContext().name)
+                .appendingPathComponent(snapshotting.name)
                 .appendingPathExtension("png")
 
-            subject = aContext().view
+            subject = snapshotting.view
             window = StandardScaleWindow(scale: Self.configuration.windowScale)
             window.colorSpace = .sRGB
             window.contentView = subject
-            size = aContext().size ?? subject.fittingSize
+            size = snapshotting.size ?? subject.fittingSize
         }
-        
-        it(aContext().name + " should match snapshot") {
+
+        it(snapshotting.name + " should match snapshot") {
             let frame = NSRect(origin: .zero, size: size)
             subject.frame = frame
             let bitmap: NSBitmapImageRep! = subject.bitmapImageRepForCachingDisplay(in: frame)
@@ -50,21 +51,21 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                     data: pngData,
                     uniformTypeIdentifier: String(kUTTypePNG)
                 )
-                attachment.name = "actual-" + aContext().name
+                attachment.name = "actual-" + snapshotting.name
                 $0.add(attachment)
                 if let existingPng = try? Data(contentsOf: snapshotUrl) {
                     let existing = XCTAttachment(
                         data: existingPng,
                         uniformTypeIdentifier: String(kUTTypePNG)
                     )
-                    existing.name = "expected-" + aContext().name
+                    existing.name = "expected-" + snapshotting.name
                     $0.add(existing)
                     if existingPng != pngData {
                         // TODO: fail when bitmap.cgImage is nil
                         if significantlyDifferentImages(existingPng, bitmap.cgImage!) {
                             let diffImage = diff(existingPng, bitmap.cgImage!, size: frame.size)
                             let diffAttachment = XCTAttachment(image: diffImage)
-                            diffAttachment.name = "diff-" + aContext().name
+                            diffAttachment.name = "diff-" + snapshotting.name
                             $0.add(diffAttachment)
                             // TODO: extract to write failure
                             try! pngData.write(to: snapshotUrl)
