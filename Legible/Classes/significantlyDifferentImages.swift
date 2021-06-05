@@ -7,13 +7,35 @@ func diff(_ old: Data, _ new: CGImage, size: NSSize) -> NSImage {
     diff(NSImage(data: old)!, NSImage(cgImage: new, size: size))
 }
 
+func diff(_ old: CGImage, _ new: CGImage) -> CICompositeOperation {
+    let differenceFilter: CICompositeOperation = CIFilter.differenceBlendMode()
+    differenceFilter.inputImage = CIImage(cgImage: old)
+    differenceFilter.backgroundImage = CIImage(cgImage: new)
+    return differenceFilter
+}
+
+func histogramData(_ ciImage: CIImage) -> Data {
+    let hist = CIFilter.areaHistogram()
+    hist.inputImage = ciImage
+    hist.setValue(CIVector(cgRect: ciImage.extent), forKey: kCIInputExtentKey)
+    return hist.value(forKey: "outputData") as! Data
+}
+
+func histogram(ciImage: CIImage) -> [UInt32] {
+    let data = histogramData(ciImage)
+    let count = data.count / MemoryLayout<UInt32>.stride
+    let result: [UInt32] = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
+        let pointer = bytes.bindMemory(to: UInt32.self)
+        return Array(UnsafeBufferPointer(start: pointer.baseAddress, count: count))
+    }
+    return result
+}
 
 func diff(_ old: NSImage, _ new: NSImage) -> NSImage {
-    let oldCiImage = CIImage(cgImage: old.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
-    let newCiImage = CIImage(cgImage: new.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
-    let differenceFilter = CIFilter.differenceBlendMode()
-    differenceFilter.inputImage = oldCiImage
-    differenceFilter.backgroundImage = newCiImage
+    let differenceFilter = diff(
+        old.cgImage(forProposedRect: nil, context: nil, hints: nil)!,
+        new.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+    )
     let unionRect = CGRect(origin: .zero, size: old.size)
         .union(.init(origin: .zero, size: new.size))
     let unionSize = unionRect.size

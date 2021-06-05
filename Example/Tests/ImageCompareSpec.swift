@@ -21,10 +21,33 @@ class ImageCompareSpec: QuickSpec {
                 }
             }
 
-            context("significantlyDifferentImages") {
-                it("should be false") {
-                    let cgImage2 = NSBitmapImageRep(data: data2)!.cgImage!
-                    expect(significantlyDifferentImages(data1, cgImage2)) == false
+            context("CGImage") {
+                var cgImage1: CGImage!
+                var cgImage2: CGImage!
+                beforeEach {
+                    cgImage1 = NSBitmapImageRep(data: data1)!.cgImage!
+                    cgImage2 = NSBitmapImageRep(data: data2)!.cgImage!
+                }
+                context("significantlyDifferentImages") {
+                    it("should be false") {
+                        expect(significantlyDifferentImages(data1, cgImage2)) == false
+                    }
+                }
+                context("diff") {
+                    context("histogram") {
+                        it("should be mostly zeros") {
+                            let difference = diff(cgImage1, cgImage2)
+                            let diffHistogram = histogram(ciImage: difference.outputImage!)
+                            expect(diffHistogram) == [
+                                152_193, 157_017, 159_319, 0,
+                                7_807, 2_983, 6_81
+                            ]
+                            + .init(repeating: 0, count: 64 * 4 - 8)
+                            + [160_000]
+                            let sum = diffHistogram.reduce(.zero, +)
+                            expect(sum) == 400 * 400 * 4
+                        }
+                    }
                 }
             }
         }
