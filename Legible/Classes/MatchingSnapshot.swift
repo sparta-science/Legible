@@ -44,7 +44,12 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
             subject.frame = frame
             let bitmap: NSBitmapImageRep! = subject.bitmapImageRepForCachingDisplay(in: frame)
             expect(bitmap).notTo(beNil())
-            subject.cacheDisplay(in: frame, to: bitmap)
+            waitUntil { done in
+                DispatchQueue.main.async {
+                    subject.cacheDisplay(in: frame, to: bitmap)
+                    done()
+                }
+            }
             let pngData: Data! = bitmap.representation(using: .png, properties: [:])
             XCTContext.runActivity(named: "compare png") {
                 let attachment = XCTAttachment(
