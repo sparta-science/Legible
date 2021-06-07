@@ -38,14 +38,17 @@ class ImageCompareSpec: QuickSpec {
                         it("should be mostly zeros") {
                             let difference = diff(cgImage1, cgImage2)
                             let diffHistogram = histogram(ciImage: difference.outputImage!)
-                            expect(diffHistogram) == [
-                                152_193, 157_017, 159_319, 0,
-                                7_807, 2_983, 6_81
-                            ]
-                            + .init(repeating: 0, count: 64 * 4 - 8)
-                            + [160_000]
+                            let totalPixels = cgImage1.height * cgImage1.width
+                            let ratioHistogram = diffHistogram.map {
+                                Double($0) / Double(totalPixels)
+                            }
+                            expect(ratioHistogram) ≈ [
+                                0.9512, 0.9814, 0.9957, 0,
+                                0.0488, 0.0186, 0.0043
+                            ] + .init(repeating: 0.0, count: 64 * 4 - 8)
+                            + [1.0]
                             let sum = diffHistogram.reduce(.zero, +)
-                            expect(sum) == 400 * 400 * 4
+                            expect(sum) == UInt32(totalPixels) * 4
                         }
                     }
                 }
