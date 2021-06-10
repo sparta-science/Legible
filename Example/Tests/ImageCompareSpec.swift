@@ -34,11 +34,21 @@ class ImageCompareSpec: QuickSpec {
                     }
                 }
                 context("diff") {
+                    var diffHistogram: [UInt32]!
+                    beforeEach {
+                        let difference = diff(cgImage1, cgImage2)
+                        diffHistogram = histogram(ciImage: difference.outputImage!)
+                    }
                     context("histogram") {
+                        var totalPixels: Int!
+                        beforeEach {
+                            totalPixels = cgImage1.height * cgImage1.width
+                        }
+                        it("sum should equal to number of pixels") {
+                            let sum = diffHistogram.reduce(.zero, +)
+                            expect(sum) == UInt32(totalPixels) * 4
+                        }
                         it("should be mostly zeros") {
-                            let difference = diff(cgImage1, cgImage2)
-                            let diffHistogram = histogram(ciImage: difference.outputImage!)
-                            let totalPixels = cgImage1.height * cgImage1.width
                             let ratioHistogram = diffHistogram.map {
                                 Double($0) / Double(totalPixels)
                             }
@@ -47,8 +57,12 @@ class ImageCompareSpec: QuickSpec {
                                 0.0488, 0.0186, 0.0043
                             ] + .init(repeating: 0.0, count: 64 * 4 - 8)
                             + [1.0]
-                            let sum = diffHistogram.reduce(.zero, +)
-                            expect(sum) == UInt32(totalPixels) * 4
+                        }
+
+                        context("maxColorDiff") {
+                            it("should be 1.5%") {
+                                expect(maxColorDiff(histogram: diffHistogram)) ≈ 0.0156
+                            }
                         }
                     }
                 }

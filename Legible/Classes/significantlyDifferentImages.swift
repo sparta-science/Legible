@@ -21,6 +21,16 @@ func histogramData(_ ciImage: CIImage) -> Data {
     return hist.value(forKey: "outputData") as! Data
 }
 
+func maxColorDiff(histogram: [UInt32]) -> Float {
+    let rgb = stride(from: 0, to: histogram.count, by: 4).map { (index: Int)-> UInt32 in
+        histogram[index] + histogram[index + 1] + histogram[index + 2]
+    }
+    if let last = rgb.lastIndex(where: { $0 > 0 }) {
+        return Float(last) / Float(rgb.count)
+    } else {
+        return 1.0
+    }
+}
 func histogram(ciImage: CIImage) -> [UInt32] {
     let data = histogramData(ciImage)
     let count = data.count / MemoryLayout<UInt32>.stride
