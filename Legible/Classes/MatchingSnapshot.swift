@@ -5,6 +5,7 @@ import SwiftUI
 public class SnapshotConfiguration {
     public var windowScale = 1
     public var snapshotsFolderUrl: URL?
+    public var maxColorDifference: Float = 0.033
 
     public func folderUrl(testFile: URL) -> URL {
         if let configured = snapshotsFolderUrl {
@@ -52,16 +53,24 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
             }
             let newImage = CIImage(bitmapImageRep: bitmap)!
             XCTContext.runActivity(named: "compare png") {
+
+                @discardableResult
+                func overwriteExpectedWithActual() -> Data {
+                    let pngData: Data! = bitmap.representation(using: .png, properties: [:])
+                    try! pngData.write(to: snapshotUrl)
+                    return pngData
+                }
                 if let oldImage = CIImage(contentsOf: snapshotUrl) {
-                    let existing = XCTAttachment(
-                        contentsOfFile: snapshotUrl,
-                        uniformTypeIdentifier: String(kUTTypePNG)
-                    )
-                    existing.name = "expected-" + snapshotting.name
-                    $0.add(existing)
                     let diffOperation = diff(oldImage, newImage)
                     let diffOutput = diffOperation.outputImage!
-                    if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > 0.02 {
+                    if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
+                        let existing = XCTAttachment(
+                            contentsOfFile: snapshotUrl,
+                            uniformTypeIdentifier: String(kUTTypePNG)
+                        )
+                        existing.name = "expected-" + snapshotting.name
+                        $0.add(existing)
+
                         let rep = NSCIImageRep(ciImage: diffOutput)
                         let diffNSImage = NSImage(size: rep.size)
                         diffNSImage.addRepresentation(rep)
@@ -69,19 +78,17 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                         diffAttachment.name = "diff-" + snapshotting.name
                         $0.add(diffAttachment)
 
-                        let pngData: Data! = bitmap.representation(using: .png, properties: [:])
+                        let pngData = overwriteExpectedWithActual()
                         let attachment = XCTAttachment(
                             data: pngData,
                             uniformTypeIdentifier: String(kUTTypePNG)
                         )
                         attachment.name = "actual-" + snapshotting.name
                         $0.add(attachment)
-                        try! pngData.write(to: snapshotUrl)
                         fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
                     }
                 } else {
-                    let pngData: Data! = bitmap.representation(using: .png, properties: [:])
-                    try! pngData.write(to: snapshotUrl)
+                    overwriteExpectedWithActual()
                     fail("\(snapshotUrl.lastPathComponent) was missing, now recorded")
                 }
             }
