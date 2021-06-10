@@ -8,9 +8,13 @@ func diff(_ old: Data, _ new: CGImage, size: NSSize) -> NSImage {
 }
 
 func diff(_ old: CGImage, _ new: CGImage) -> CICompositeOperation {
+    diff(CIImage(cgImage: old), CIImage(cgImage: new))
+}
+
+func diff(_ old: CIImage, _ new: CIImage) -> CICompositeOperation {
     let differenceFilter: CICompositeOperation = CIFilter.differenceBlendMode()
-    differenceFilter.inputImage = CIImage(cgImage: old)
-    differenceFilter.backgroundImage = CIImage(cgImage: new)
+    differenceFilter.inputImage = old
+    differenceFilter.backgroundImage = new
     return differenceFilter
 }
 
