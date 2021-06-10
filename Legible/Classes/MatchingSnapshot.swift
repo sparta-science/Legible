@@ -50,34 +50,37 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                     done()
                 }
             }
-            let pngData: Data! = bitmap.representation(using: .png, properties: [:])
+            let newImage = CIImage(bitmapImageRep: bitmap)!
             XCTContext.runActivity(named: "compare png") {
-                let attachment = XCTAttachment(
-                    data: pngData,
-                    uniformTypeIdentifier: String(kUTTypePNG)
-                )
-                attachment.name = "actual-" + snapshotting.name
-                $0.add(attachment)
-                if let existingPng = try? Data(contentsOf: snapshotUrl) {
+                if let oldImage = CIImage(contentsOf: snapshotUrl) {
                     let existing = XCTAttachment(
-                        data: existingPng,
+                        contentsOfFile: snapshotUrl,
                         uniformTypeIdentifier: String(kUTTypePNG)
                     )
                     existing.name = "expected-" + snapshotting.name
                     $0.add(existing)
-                    if existingPng != pngData {
-                        // TODO: fail when bitmap.cgImage is nil
-                        if significantlyDifferentImages(existingPng, bitmap.cgImage!) {
-                            let diffImage = diff(existingPng, bitmap.cgImage!, size: frame.size)
-                            let diffAttachment = XCTAttachment(image: diffImage)
-                            diffAttachment.name = "diff-" + snapshotting.name
-                            $0.add(diffAttachment)
-                            // TODO: extract to write failure
-                            try! pngData.write(to: snapshotUrl)
-                            fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
-                        }
+                    let diffOperation = diff(oldImage, newImage)
+                    let diffOutput = diffOperation.outputImage!
+                    if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > 0.02 {
+                        let rep = NSCIImageRep(ciImage: diffOutput)
+                        let diffNSImage = NSImage(size: rep.size)
+                        diffNSImage.addRepresentation(rep)
+                        let diffAttachment = XCTAttachment(image: diffNSImage)
+                        diffAttachment.name = "diff-" + snapshotting.name
+                        $0.add(diffAttachment)
+
+                        let pngData: Data! = bitmap.representation(using: .png, properties: [:])
+                        let attachment = XCTAttachment(
+                            data: pngData,
+                            uniformTypeIdentifier: String(kUTTypePNG)
+                        )
+                        attachment.name = "actual-" + snapshotting.name
+                        $0.add(attachment)
+                        try! pngData.write(to: snapshotUrl)
+                        fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
                     }
                 } else {
+                    let pngData: Data! = bitmap.representation(using: .png, properties: [:])
                     try! pngData.write(to: snapshotUrl)
                     fail("\(snapshotUrl.lastPathComponent) was missing, now recorded")
                 }
