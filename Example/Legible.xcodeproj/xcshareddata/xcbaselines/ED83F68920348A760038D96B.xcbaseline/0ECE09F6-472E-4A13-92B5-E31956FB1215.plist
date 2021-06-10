@@ -6,6 +6,16 @@
 	<dict>
 		<key>PerformanceTest</key>
 		<dict>
+			<key>test_CoreImage_AndLoad_Performance()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.018587</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Jun 10, 2021 at 12:40:45 AM</string>
+				</dict>
+			</dict>
 			<key>test_CoreImage_Performance()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
@@ -14,6 +24,16 @@
 					<real>0.0015753</real>
 					<key>baselineIntegrationDisplayName</key>
 					<string>Jun 10, 2021 at 12:20:22 AM</string>
+				</dict>
+			</dict>
+			<key>test_vImage_Buffer_AndLoad_Performance()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.011776</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Jun 10, 2021 at 12:40:45 AM</string>
 				</dict>
 			</dict>
 			<key>test_vImage_Buffer_Performance()</key>
