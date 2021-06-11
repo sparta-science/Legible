@@ -52,11 +52,11 @@ class ImageCompareSpec: QuickSpec {
                             let ratioHistogram = diffHistogram.map {
                                 Double($0) / Double(totalPixels)
                             }
-                            expect(ratioHistogram) ≈ [
+                            expect(ratioHistogram).to(beCloseTo([
                                 0.9512, 0.9814, 0.9957, 0,
                                 0.0488, 0.0186, 0.0043
                             ] + .init(repeating: 0.0, count: 64 * 4 - 8)
-                            + [1.0]
+                            + [1.0], within: 0.001))
                         }
 
                         context("maxColorDiff") {
