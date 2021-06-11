@@ -23,6 +23,16 @@ jobs:
         scheme: Tests
         result-bundle-path: test-results/unit-specs
         build-settings: -test-timeouts-enabled YES
+    - name: Performance Tests
+      uses: sersoft-gmbh/xcodebuild-action@v1.3
+      with:
+        workspace: Example/Legible.xcworkspace
+        scheme: Tests
+        test-plan: Performance
+        result-bundle-path: test-results/performance-tests
+        build-settings: -test-timeouts-enabled YES
+    - name: Save Performance baselines
+      run: cp -R Example/Legible.xcodeproj/xcshareddata/xcbaselines ./test-results/
     - name: Save crash reports created since test-results
       if: failure()
       run: find ~/Library/Logs/DiagnosticReports/*.crash -newerBB ./test-results
