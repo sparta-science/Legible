@@ -67,5 +67,4 @@ class PerformanceTest: XCTestCase {
             _ = significantlyDifferentImages(data1, cgImage2)
         }
     }
-
 }
