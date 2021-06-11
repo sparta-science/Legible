@@ -17,14 +17,14 @@ jobs:
       with:
         xcode-version: latest-stable
     - name: Unit Specs
-      uses: sersoft-gmbh/xcodebuild-action@v1.3
+      uses: sersoft-gmbh/xcodebuild-action@v1.4
       with:
         workspace: Example/Legible.xcworkspace
         scheme: Tests
         result-bundle-path: test-results/unit-specs
         build-settings: -test-timeouts-enabled YES
     - name: Performance Tests
-      uses: sersoft-gmbh/xcodebuild-action@v1.3
+      uses: sersoft-gmbh/xcodebuild-action@v1.4
       with:
         workspace: Example/Legible.xcworkspace
         scheme: Tests
