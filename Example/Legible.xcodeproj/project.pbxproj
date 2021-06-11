@@ -21,6 +21,7 @@
 		4A81D17C264FBB95007263F2 /* PublishedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17B264FBB95007263F2 /* PublishedSpec.swift */; };
 		4A81D17E264FBF64007263F2 /* DataTaskPublisherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */; };
 		4A81D180264FE1DD007263F2 /* ObservableObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */; };
+		4A9AD243267332BA0087E32C /* MatchingSnapshotFailureSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AD242267332BA0087E32C /* MatchingSnapshotFailureSpec.swift */; };
 		4BB630A72665D1030053F84D /* MatchingSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB630A62665D1030053F84D /* MatchingSnapshotSpec.swift */; };
 		8178EA24F4805AB1442FD4CB /* Pods_Legible_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CEF7A7D3B4AFD1CDEAFD48 /* Pods_Legible_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjectSpec.swift; sourceTree = "<group>"; };
 		4A9AD24026732FAC0087E32C /* Specs.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Specs.xctestplan; sourceTree = "<group>"; };
 		4A9AD24126732FC00087E32C /* Performance.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Performance.xctestplan; sourceTree = "<group>"; };
+		4A9AD242267332BA0087E32C /* MatchingSnapshotFailureSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSnapshotFailureSpec.swift; sourceTree = "<group>"; };
 		4BB630A62665D1030053F84D /* MatchingSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSnapshotSpec.swift; sourceTree = "<group>"; };
 		4E031560367FFF42E85D7A1A /* Legible.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Legible.podspec; path = ../Legible.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ED83F68A20348A760038D96B /* Legible_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Legible_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */,
 				4A46D19A2663360F00902F68 /* SwiftUISpec.swift */,
 				4BB630A62665D1030053F84D /* MatchingSnapshotSpec.swift */,
+				4A9AD242267332BA0087E32C /* MatchingSnapshotFailureSpec.swift */,
 				4A2EED1B266B762E00724888 /* ImageCompareSpec.swift */,
 				4A4A3BED2671F1B4002CBACB /* PerformanceTest.swift */,
 				4A2EED17266B664F00724888 /* AvatarView-1.png */,
@@ -270,6 +273,7 @@
 				4A81D176264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift in Sources */,
 				4A2EED1C266B762E00724888 /* ImageCompareSpec.swift in Sources */,
 				4A46D1A42664F59900902F68 /* AvatarView.swift in Sources */,
+				4A9AD243267332BA0087E32C /* MatchingSnapshotFailureSpec.swift in Sources */,
 				4A4A3BEE2671F1B4002CBACB /* PerformanceTest.swift in Sources */,
 				4A81D17A264FB6BF007263F2 /* BehavesLikeCombineSpec.swift in Sources */,
 				4A81D180264FE1DD007263F2 /* ObservableObjectSpec.swift in Sources */,
