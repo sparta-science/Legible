@@ -51,45 +51,44 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                     done()
                 }
             }
-            let newImage = CIImage(bitmapImageRep: bitmap)!
+            @discardableResult
+            func overwriteExpectedWithActual() -> Data {
+                let pngData: Data! = bitmap.representation(using: .png, properties: [:])
+                try! pngData.write(to: snapshotUrl)
+                return pngData
+            }
             XCTContext.runActivity(named: "compare png") {
-
-                @discardableResult
-                func overwriteExpectedWithActual() -> Data {
-                    let pngData: Data! = bitmap.representation(using: .png, properties: [:])
-                    try! pngData.write(to: snapshotUrl)
-                    return pngData
-                }
-                if let oldImage = CIImage(contentsOf: snapshotUrl) {
-                    let diffOperation = diff(oldImage, newImage)
-                    let diffOutput = diffOperation.outputImage!
-                    if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
-                        let existing = XCTAttachment(
-                            contentsOfFile: snapshotUrl,
-                            uniformTypeIdentifier: String(kUTTypePNG)
-                        )
-                        existing.name = "expected-" + snapshotting.name
-                        $0.add(existing)
-
-                        let rep = NSCIImageRep(ciImage: diffOutput)
-                        let diffNSImage = NSImage(size: rep.size)
-                        diffNSImage.addRepresentation(rep)
-                        let diffAttachment = XCTAttachment(image: diffNSImage)
-                        diffAttachment.name = "diff-" + snapshotting.name
-                        $0.add(diffAttachment)
-
-                        let pngData = overwriteExpectedWithActual()
-                        let attachment = XCTAttachment(
-                            data: pngData,
-                            uniformTypeIdentifier: String(kUTTypePNG)
-                        )
-                        attachment.name = "actual-" + snapshotting.name
-                        $0.add(attachment)
-                        fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
-                    }
-                } else {
+                guard let oldImage = CIImage(contentsOf: snapshotUrl) else {
                     overwriteExpectedWithActual()
                     fail("\(snapshotUrl.lastPathComponent) was missing, now recorded")
+                    return
+                }
+                let newImage = CIImage(bitmapImageRep: bitmap)!
+                let diffOperation = diff(oldImage, newImage)
+                let diffOutput = diffOperation.outputImage!
+                if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
+                    let existing = XCTAttachment(
+                        contentsOfFile: snapshotUrl,
+                        uniformTypeIdentifier: String(kUTTypePNG)
+                    )
+                    existing.name = "expected-" + snapshotting.name
+                    $0.add(existing)
+
+                    let rep = NSCIImageRep(ciImage: diffOutput)
+                    let diffNSImage = NSImage(size: rep.size)
+                    diffNSImage.addRepresentation(rep)
+                    let diffAttachment = XCTAttachment(image: diffNSImage)
+                    diffAttachment.name = "diff-" + snapshotting.name
+                    $0.add(diffAttachment)
+
+                    let pngData = overwriteExpectedWithActual()
+                    let attachment = XCTAttachment(
+                        data: pngData,
+                        uniformTypeIdentifier: String(kUTTypePNG)
+                    )
+                    attachment.name = "actual-" + snapshotting.name
+                    $0.add(attachment)
+                    fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
                 }
             }
         }
