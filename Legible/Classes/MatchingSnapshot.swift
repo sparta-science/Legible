@@ -22,7 +22,7 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
 
     public override class func spec(_ aContext: @escaping () -> Snapshotting) {
         var snapshotUrl: URL!
-        var window: NSWindow!
+//        var window: NSWindow!
         var subject: NSView!
         var size: NSSize!
         let snapshotting: Snapshotting = aContext()
@@ -34,9 +34,9 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                 .appendingPathExtension("png")
 
             subject = snapshotting.view
-            window = StandardScaleWindow(scale: Self.configuration.windowScale)
-            window.colorSpace = .sRGB
-            window.contentView = subject
+//            window = StandardScaleWindow(scale: Self.configuration.windowScale)
+//            window.colorSpace = .sRGB
+//            window.contentView = subject
             size = snapshotting.size ?? subject.fittingSize
         }
 
@@ -44,6 +44,8 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
             let frame = NSRect(origin: .zero, size: size)
             subject.frame = frame
             let bitmap: NSBitmapImageRep! = subject.bitmapImageRepForCachingDisplay(in: frame)
+            bitmap.pixelsWide = Int(bitmap.size.width)
+            bitmap.pixelsHigh = Int(bitmap.size.height)
             expect(bitmap).notTo(beNil())
             waitUntil { done in
                 DispatchQueue.main.async {
