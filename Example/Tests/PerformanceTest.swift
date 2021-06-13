@@ -11,6 +11,10 @@ import XCTest
 
  including image load
  performance of CoreImage is 1.5 times slower (0.018587 vs 0.011776)
+ 
+ on Macbook Pro
+ 3.5 faster (0.0021594 vs 0.0073569)
+ with load 1.7 times slower (0.024396 vs 0.014482)
  */
 class PerformanceTest: XCTestCase {
     let bundle = Bundle(for: PerformanceTest.self)
