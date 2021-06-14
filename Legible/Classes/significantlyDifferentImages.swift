@@ -54,18 +54,6 @@ func diff(_ old: NSImage, _ new: NSImage) -> NSImage {
         .union(.init(origin: .zero, size: new.size))
     let unionSize = unionRect.size
 
-    let hist = CIFilter.areaHistogram()
-    hist.inputImage = differenceFilter.outputImage
-    hist.setValue(CIVector(cgRect: unionRect), forKey: kCIInputExtentKey)
-    let data: Data! = hist.value(forKey: "outputData") as? Data
-    try? data.write(to: .init(fileURLWithPath: "/tmp/areaHistogram.data"))
-    let count = data.count / MemoryLayout<UInt32>.stride
-    let result: [UInt32] = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
-        let pointer = bytes.bindMemory(to: UInt32.self)
-        return Array(UnsafeBufferPointer(start: pointer.baseAddress, count: count))
-    }
-    print(result)
-
     let rep = NSCIImageRep(ciImage: differenceFilter.outputImage!)
     let difference = NSImage(size: unionSize)
     difference.addRepresentation(rep)

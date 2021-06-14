@@ -19,7 +19,8 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "PerformanceTest"
+        "DiffPerformanceTest",
+        "SnapshotPerformanceTest"
       ],
       "target" : {
         "containerPath" : "container:Legible.xcodeproj",
