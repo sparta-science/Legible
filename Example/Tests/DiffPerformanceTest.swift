@@ -16,8 +16,8 @@ import XCTest
  3.5 faster (0.0021594 vs 0.0073569)
  with load 1.7 times slower (0.024396 vs 0.014482)
  */
-class PerformanceTest: XCTestCase {
-    let bundle = Bundle(for: PerformanceTest.self)
+class DiffPerformanceTest: XCTestCase {
+    let bundle = Bundle(for: DiffPerformanceTest.self)
     var image1Url: URL!
     var image2Url: URL!
 
