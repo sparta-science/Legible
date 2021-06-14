@@ -27,6 +27,13 @@ class SnapshotPerformanceTest: XCTestCase {
     }
 
     func test_CoreImage_Performance() throws {
+        XCTAssertEqual(0, CIContext.offlineGPUCount())
+        let context = CIContext(
+            options: [
+                .useSoftwareRenderer : NSNumber(booleanLiteral: true),
+                .cacheIntermediates : NSNumber(booleanLiteral: false)
+            ]
+        )
         measure {
             let bitmap = getBitmap()
 
@@ -38,6 +45,7 @@ class SnapshotPerformanceTest: XCTestCase {
             let diff = maxColorDiff(histogram: histogram(ciImage: diffOutput))
             XCTAssertEqual(0.015625, diff)
         }
+        context.reclaimResources()
     }
 
     func test_vImage_Buffer_Performance() throws {
