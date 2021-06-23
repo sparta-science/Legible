@@ -25,6 +25,16 @@
 		4A9AD2452676E43C0087E32C /* SnapshotPerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AD2442676E43C0087E32C /* SnapshotPerformanceTest.swift */; };
 		4BB630A72665D1030053F84D /* MatchingSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB630A62665D1030053F84D /* MatchingSnapshotSpec.swift */; };
 		8178EA24F4805AB1442FD4CB /* Pods_Legible_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CEF7A7D3B4AFD1CDEAFD48 /* Pods_Legible_Tests.framework */; };
+		C324825C2683411800037566 /* it+behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = C324825B2683411800037566 /* it+behavior.swift */; };
+		C324825E2683415600037566 /* QuickHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C324825D2683415500037566 /* QuickHelper.swift */; };
+		C3537394268315C000BE87FB /* CombinePublishedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353738D268315BF00BE87FB /* CombinePublishedSpec.swift */; };
+		C3537395268315C000BE87FB /* CombineLatestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353738E268315BF00BE87FB /* CombineLatestSpec.swift */; };
+		C3537396268315C000BE87FB /* CombineCurrentValueSubjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353738F268315BF00BE87FB /* CombineCurrentValueSubjectSpec.swift */; };
+		C3537397268315C000BE87FB /* CombineSubscribeOnSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3537390268315BF00BE87FB /* CombineSubscribeOnSpec.swift */; };
+		C3537399268315C000BE87FB /* CombineAssignToPublishedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3537392268315C000BE87FB /* CombineAssignToPublishedSpec.swift */; };
+		C353739A268315C000BE87FB /* CombineAnySubscriberSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3537393268315C000BE87FB /* CombineAnySubscriberSpec.swift */; };
+		C35373B22683258E00BE87FB /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35373B12683258E00BE87FB /* Init.swift */; };
+		C35373B42683259400BE87FB /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35373B32683259400BE87FB /* Initializable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +65,16 @@
 		4A9AD2442676E43C0087E32C /* SnapshotPerformanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotPerformanceTest.swift; sourceTree = "<group>"; };
 		4BB630A62665D1030053F84D /* MatchingSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSnapshotSpec.swift; sourceTree = "<group>"; };
 		4E031560367FFF42E85D7A1A /* Legible.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Legible.podspec; path = ../Legible.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C324825B2683411800037566 /* it+behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "it+behavior.swift"; sourceTree = "<group>"; };
+		C324825D2683415500037566 /* QuickHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickHelper.swift; sourceTree = "<group>"; };
+		C353738D268315BF00BE87FB /* CombinePublishedSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinePublishedSpec.swift; sourceTree = "<group>"; };
+		C353738E268315BF00BE87FB /* CombineLatestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineLatestSpec.swift; sourceTree = "<group>"; };
+		C353738F268315BF00BE87FB /* CombineCurrentValueSubjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineCurrentValueSubjectSpec.swift; sourceTree = "<group>"; };
+		C3537390268315BF00BE87FB /* CombineSubscribeOnSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineSubscribeOnSpec.swift; sourceTree = "<group>"; };
+		C3537392268315C000BE87FB /* CombineAssignToPublishedSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineAssignToPublishedSpec.swift; sourceTree = "<group>"; };
+		C3537393268315C000BE87FB /* CombineAnySubscriberSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineAnySubscriberSpec.swift; sourceTree = "<group>"; };
+		C35373B12683258E00BE87FB /* Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
+		C35373B32683259400BE87FB /* Initializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
 		ED83F68A20348A760038D96B /* Legible_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Legible_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED83F69020348A760038D96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F551AFD48E8A0565FAA313FA /* Pods-Legible_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Legible_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Legible_Tests/Pods-Legible_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,12 +119,24 @@
 			name = Performance;
 			sourceTree = "<group>";
 		};
+		C3248265268342CB00037566 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C324825B2683411800037566 /* it+behavior.swift */,
+				C324825D2683415500037566 /* QuickHelper.swift */,
+				C35373B32683259400BE87FB /* Initializable.swift */,
+				C35373B12683258E00BE87FB /* Init.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		ED83F66F20348A760038D96B = {
 			isa = PBXGroup;
 			children = (
 				4A81D172264F8287007263F2 /* workflows */,
 				ED83F69A20348B650038D96B /* Podspec Metadata */,
 				ED83F68D20348A760038D96B /* Tests */,
+				C3248265268342CB00037566 /* Supporting Files */,
 				ED83F67920348A760038D96B /* Products */,
 				3D2DFBF5527BE37E09D1E948 /* Pods */,
 				05BACD06843E41812426F441 /* Frameworks */,
@@ -122,6 +154,12 @@
 		ED83F68D20348A760038D96B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C3537393268315C000BE87FB /* CombineAnySubscriberSpec.swift */,
+				C3537392268315C000BE87FB /* CombineAssignToPublishedSpec.swift */,
+				C353738F268315BF00BE87FB /* CombineCurrentValueSubjectSpec.swift */,
+				C353738E268315BF00BE87FB /* CombineLatestSpec.swift */,
+				C353738D268315BF00BE87FB /* CombinePublishedSpec.swift */,
+				C3537390268315BF00BE87FB /* CombineSubscribeOnSpec.swift */,
 				4A9AD24026732FAC0087E32C /* Specs.xctestplan */,
 				4A9AD24126732FC00087E32C /* Performance.xctestplan */,
 				4A46D1A22664F02000902F68 /* Snapshots */,
@@ -282,15 +320,25 @@
 				4A81D17E264FBF64007263F2 /* DataTaskPublisherSpec.swift in Sources */,
 				4A81D17C264FBB95007263F2 /* PublishedSpec.swift in Sources */,
 				4A81D176264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift in Sources */,
+				C3537396268315C000BE87FB /* CombineCurrentValueSubjectSpec.swift in Sources */,
+				C3537394268315C000BE87FB /* CombinePublishedSpec.swift in Sources */,
+				C3537397268315C000BE87FB /* CombineSubscribeOnSpec.swift in Sources */,
 				4A2EED1C266B762E00724888 /* ImageCompareSpec.swift in Sources */,
+				C324825C2683411800037566 /* it+behavior.swift in Sources */,
 				4A46D1A42664F59900902F68 /* AvatarView.swift in Sources */,
+				C3537395268315C000BE87FB /* CombineLatestSpec.swift in Sources */,
 				4A9AD243267332BA0087E32C /* MatchingSnapshotFailureSpec.swift in Sources */,
 				4A4A3BEE2671F1B4002CBACB /* DiffPerformanceTest.swift in Sources */,
+				C3537399268315C000BE87FB /* CombineAssignToPublishedSpec.swift in Sources */,
+				C35373B42683259400BE87FB /* Initializable.swift in Sources */,
+				C324825E2683415600037566 /* QuickHelper.swift in Sources */,
 				4A9AD2452676E43C0087E32C /* SnapshotPerformanceTest.swift in Sources */,
 				4A81D17A264FB6BF007263F2 /* BehavesLikeCombineSpec.swift in Sources */,
 				4A81D180264FE1DD007263F2 /* ObservableObjectSpec.swift in Sources */,
 				4A46D19F2664C9B800902F68 /* HDivider.swift in Sources */,
 				4A81D178264F9824007263F2 /* FormatterExampleSpec.swift in Sources */,
+				C353739A268315C000BE87FB /* CombineAnySubscriberSpec.swift in Sources */,
+				C35373B22683258E00BE87FB /* Init.swift in Sources */,
 				4BB630A72665D1030053F84D /* MatchingSnapshotSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
