@@ -3,6 +3,7 @@ import Nimble
 import SwiftUI
 
 public class SnapshotConfiguration {
+    static public var usedSnapshots = [URL]()
     public var windowScale = 1
     public var snapshotsFolderUrl: URL?
     public var maxColorDifference: Float = 0.033
@@ -33,6 +34,7 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                 .appendingPathComponent(snapshotting.name)
                 .appendingPathExtension("png")
 
+            SnapshotConfiguration.usedSnapshots.append(snapshotUrl)
             subject = snapshotting.view
             window = StandardScaleWindow(scale: Self.configuration.windowScale)
             window.colorSpace = .sRGB
