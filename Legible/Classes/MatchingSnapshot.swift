@@ -59,38 +59,40 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                 try! pngData.write(to: snapshotUrl)
                 return pngData
             }
-            XCTContext.runActivity(named: "compare png") {
+            XCTContext.runActivity(named: "compare png") { activity in
                 guard let oldImage = CIImage(contentsOf: snapshotUrl) else {
                     overwriteExpectedWithActual()
                     fail("\(snapshotUrl.lastPathComponent) was missing, now recorded")
                     return
                 }
-                let newImage = CIImage(bitmapImageRep: bitmap)!
-                let diffOperation = diff(oldImage, newImage)
-                let diffOutput = diffOperation.outputImage!
-                if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
-                    let existing = XCTAttachment(
-                        contentsOfFile: snapshotUrl,
-                        uniformTypeIdentifier: String(kUTTypePNG)
-                    )
-                    existing.name = "expected-" + snapshotting.name
-                    $0.add(existing)
+                autoreleasepool {
+                    let newImage = CIImage(bitmapImageRep: bitmap)!
+                    let diffOperation = diff(oldImage, newImage)
+                    let diffOutput = diffOperation.outputImage!
+                    if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
+                        let existing = XCTAttachment(
+                            contentsOfFile: snapshotUrl,
+                            uniformTypeIdentifier: String(kUTTypePNG)
+                        )
+                        existing.name = "expected-" + snapshotting.name
+                        activity.add(existing)
 
-                    let rep = NSCIImageRep(ciImage: diffOutput)
-                    let diffNSImage = NSImage(size: rep.size)
-                    diffNSImage.addRepresentation(rep)
-                    let diffAttachment = XCTAttachment(image: diffNSImage)
-                    diffAttachment.name = "diff-" + snapshotting.name
-                    $0.add(diffAttachment)
+                        let rep = NSCIImageRep(ciImage: diffOutput)
+                        let diffNSImage = NSImage(size: rep.size)
+                        diffNSImage.addRepresentation(rep)
+                        let diffAttachment = XCTAttachment(image: diffNSImage)
+                        diffAttachment.name = "diff-" + snapshotting.name
+                        activity.add(diffAttachment)
 
-                    let pngData = overwriteExpectedWithActual()
-                    let attachment = XCTAttachment(
-                        data: pngData,
-                        uniformTypeIdentifier: String(kUTTypePNG)
-                    )
-                    attachment.name = "actual-" + snapshotting.name
-                    $0.add(attachment)
-                    fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
+                        let pngData = overwriteExpectedWithActual()
+                        let attachment = XCTAttachment(
+                            data: pngData,
+                            uniformTypeIdentifier: String(kUTTypePNG)
+                        )
+                        attachment.name = "actual-" + snapshotting.name
+                        activity.add(attachment)
+                        fail("\(snapshotUrl.lastPathComponent) was different, now recorded")
+                    }
                 }
             }
         }
