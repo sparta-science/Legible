@@ -33,6 +33,9 @@ class BehavesLikeCombineSpec: QuickSpec {
                     subject
                         .shouldReceive(expectedValue: "pear")
                         .immediately
+                        .then {
+                            expect(subject.value) == "pear"
+                        }
                 }
             }
             context("Empty") {

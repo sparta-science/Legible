@@ -126,6 +126,11 @@ public struct CombineAction {
     var expecting: CombineExpectation
     var action: (() -> Void)?
     var timeout: TimeInterval
+    var after: (() -> Void)?
+
+    public func then(_ execute: @escaping () -> Void) -> CombineAction {
+        CombineAction(expecting: expecting, action: action, timeout: timeout, after: execute)
+    }
 }
 
 public extension CombineExpectation {
@@ -178,6 +183,7 @@ public class BehavesLikeCombine: Behavior<CombineAction> {
                     fail(expectation.expectationDescription)
                 }
                 inContext.expecting.cancellable.cancel()
+                inContext.after?()
             }
         }
     }
