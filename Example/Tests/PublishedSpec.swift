@@ -18,7 +18,6 @@ class PublishedSpec: QuickSpec {
                 itBehavesLike(CombinePublisher.self) {
                     subject.$score
                         .shouldReceive(expectedValue: "0:0")
-                        .immediately
                 }
             }
             context("on change") {

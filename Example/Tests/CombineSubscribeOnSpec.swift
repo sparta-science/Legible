@@ -16,9 +16,10 @@ class CombineSubscribeOnSpec: QuickSpec {
                         .subscribe(on: DispatchQueue.main)
                         .dropFirst()
                         .shouldNotReceive()
-                        .when({
+                        .before(timeout: 1)
+                        .when {
                             subject.isOnline = false
-                        }, timeout: 1)
+                        }
                 }
             }
             context("no drop first") {
@@ -27,9 +28,10 @@ class CombineSubscribeOnSpec: QuickSpec {
                         .$isOnline
                         .subscribe(on: DispatchQueue.main)
                         .shouldReceive(expectedValue: false)
-                        .when({
+                        .before(timeout: 1)
+                        .when {
                             subject.isOnline = false
-                        }, timeout: 1)
+                        }
                 }
             }
         }

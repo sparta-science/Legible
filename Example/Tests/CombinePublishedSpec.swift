@@ -16,11 +16,13 @@ class CombinePublishedSpec: QuickSpec {
                         .$isOnline
                         .dropFirst()
                         .shouldReceive(expectedValue: false) {
-                            expect(subject.isOnline).to(equal(true), description: "should be true")
+                            expect(subject.isOnline).to(equal(true),
+                                                        description: "should be true")
                         }
-                        .when({
+                        .before(timeout: 1)
+                        .when {
                             subject.isOnline = false
-                        }, timeout: 1)
+                        }
                 }
             }
             context("receiving on main with didSet") {
@@ -29,12 +31,14 @@ class CombinePublishedSpec: QuickSpec {
                         .$isOnline
                         .didSet
                         .dropFirst()
-                        .shouldReceive(expectedValue: false) {
+                        .shouldReceive(expectedValue: false)
+                        .before(timeout: 1)
+                        .when {
+                            subject.isOnline = false
+                        }
+                        .then {
                             expect(subject.isOnline) == false
                         }
-                        .when({
-                            subject.isOnline = false
-                        }, timeout: 1)
                 }
             }
         }

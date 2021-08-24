@@ -18,7 +18,6 @@ class CombineLatestSpec: QuickSpec {
                     subject
                         .map(\.0)
                         .shouldFinish(expectedValue: "apple")
-                        .immediately
                 }
             }
             context("completion when not finished") {
@@ -30,9 +29,7 @@ class CombineLatestSpec: QuickSpec {
                     .eraseToAnyPublisher()
                 }
                 it(BehavesLikeCombine.self, "should not finish when one of the publishers doesn't complete") {
-                    subject
-                        .shouldNotReceive()
-                        .immediately
+                    subject.shouldNotReceive()
                 }
             }
         }

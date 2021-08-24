@@ -21,7 +21,7 @@ private func expecting(name: String = #function,
 }
 
 public extension Publisher where Self.Failure: Error {
-    func shouldFail<T: Error & Equatable>(expectedError: T,
+    func shouldFail<T: Error & Equatable>(with expectedError: T,
                                           _ execute: (() -> Void)? = nil,
                                           file: String = #file,
                                           line: UInt = #line) -> CombineExpectation {
@@ -40,7 +40,6 @@ public extension Publisher where Self.Failure: Error {
 }
 public extension Publisher where Self.Output: Equatable {
     func shouldFinish(expectedValue: Output,
-                      _ execute: (() -> Void)? = nil,
                       file: String = #file,
                       line: UInt = #line) -> CombineExpectation {
         expecting { expectation in
@@ -52,7 +51,6 @@ public extension Publisher where Self.Output: Equatable {
                 }
             } receiveValue: { value in
                 expect(value) == expectedValue
-                execute?()
             }
         }
     }
@@ -69,11 +67,10 @@ public extension Publisher where Self.Output: Equatable {
 }
 
 public extension Publisher {
-    func shouldFinish(_ execute: (() -> Void)? = nil) -> CombineExpectation {
+    func shouldFinish() -> CombineExpectation {
         expecting { expectation in
             sink(receiveCompletion: { completion in
                 if case .finished = completion {
-                    execute?()
                     expectation.fulfill()
                 } else {
                     fail("unexpected \(completion)")
@@ -81,13 +78,11 @@ public extension Publisher {
             }, receiveValue: shouldNotBeCalled(_:))
         }
     }
-    func shouldReceive(_ execute: (() -> Void)? = nil,
-                       file: String = #file,
+    func shouldReceive(file: String = #file,
                        line: UInt = #line) -> CombineExpectation where Output == Void {
         expecting { expectation in
             sink(receiveCompletion: shouldNotBeCalled(_:)) { value in
                 expect(file: file, line: line, value) == Void()
-                execute?()
                 expectation.fulfill()
             }
         }
@@ -107,7 +102,7 @@ public extension Publisher {
             }
         }
     }
-    func whenFinished(afterReceiving: @escaping (Output) -> Void,
+    func shouldFinish(afterReceiving: @escaping (Output) -> Void,
                       file: String = #file,
                       line: UInt = #line) -> CombineExpectation {
         expecting { expectation in
@@ -123,40 +118,61 @@ public extension Publisher {
 }
 
 public struct CombineAction {
-    var expecting: CombineExpectation
+    var waiting: CombineTimelyExpectation
     var action: (() -> Void)?
-    var timeout: TimeInterval
     var finally: (() -> Void)?
 
     public func then(_ execute: @escaping () -> Void) -> CombineAction {
-        CombineAction(expecting: expecting, action: action, timeout: timeout, finally: execute)
+        CombineAction(waiting: waiting, action: action, finally: execute)
+    }
+}
+
+public struct CombineTimelyExpectation {
+    var expecting: CombineExpectation
+    var timeout: TimeInterval
+
+    public func when(_ execute: (() -> Void)? = nil) -> CombineAction {
+        CombineAction(waiting: self, action: execute)
+    }
+    public func when<S: Publisher>(_ publisher: S) -> WhenPublisher<S> {
+        WhenPublisher(publisher: publisher, expectation: self)
+    }
+    public func then(_ execute: @escaping () -> Void) -> CombineAction {
+        CombineAction(waiting: self, action: nil, finally: execute)
     }
 }
 
 public extension CombineExpectation {
-    var immediately: CombineAction {
+    internal var immediately: CombineTimelyExpectation {
         before(timeout: 0)
     }
 
-    func before(timeout: TimeInterval) -> CombineAction {
-        when(timeout: timeout)
+    func before(timeout: TimeInterval) -> CombineTimelyExpectation {
+        CombineTimelyExpectation(expecting: self, timeout: timeout)
     }
 
-    func when(_ execute: (() -> Void)? = nil, timeout: TimeInterval = 0) -> CombineAction {
-        CombineAction(expecting: self, action: execute, timeout: timeout)
+    func when(_ execute: (() -> Void)? = nil) -> CombineAction {
+        immediately.when(execute)
+    }
+    func when<S: Publisher>(_ publisher: S) -> WhenPublisher<S> {
+        immediately.when(publisher)
+    }
+    func then(_ execute: @escaping () -> Void) -> CombineAction {
+        immediately.then(execute)
+    }
+}
+
+public struct WhenPublisher<P> where P: Publisher {
+    let publisher: P
+    let expectation: CombineTimelyExpectation
+
+    internal init(publisher: P, expectation: CombineTimelyExpectation) {
+        self.publisher = publisher
+        self.expectation = expectation
     }
 
-    func when<S: Subject>(_ publisher: S, sends value: S.Output, _ execute: (() -> Void)? = nil) -> CombineAction {
-        when {
-            publisher.send(value)
-            execute?()
-        }
-    }
-    func when<S: Subject>(_ publisher: S, completesWith error: S.Failure) -> CombineAction {
-        when { publisher.send(completion: .failure(error)) }
-    }
-    func whenFinished<S: Publisher>(_ publisher: S) -> CombineAction {
-        when {
+    public var finishes: CombineAction {
+        expectation.when {
             let cancellable = publisher.sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     fail("finished with error: \(error)")
@@ -167,26 +183,55 @@ public extension CombineExpectation {
     }
 }
 
-public class BehavesLikeCombine: Behavior<CombineAction> {
+extension WhenPublisher where P: Subject {
+    public func sends(_ value: P.Output) -> CombineAction {
+        expectation.when {
+            publisher.send(value)
+        }
+    }
+    public func fails(with error: P.Failure) -> CombineAction {
+        expectation.when {
+            publisher.send(completion: .failure(error))
+        }
+    }
+}
+
+internal class BehavesLikeCombineChain: Behavior<CombineAction> {
     public override class func spec(_ aContext: @escaping () -> CombineAction) {
         context("stream of events") {
             var inContext: CombineAction!
             var expectation: XCTestExpectation!
             beforeEach {
                 inContext = aContext()
-                expectation = inContext.expecting.expectation
+                expectation = inContext.waiting.expecting.expectation
             }
             it("should fullfil expectations") {
                 inContext.action?()
                 if .completed != XCTWaiter().wait(for: [expectation],
-                                                  timeout: inContext.timeout) {
+                                                  timeout: inContext.waiting.timeout) {
                     fail(expectation.expectationDescription)
                 }
-                inContext.expecting.cancellable.cancel()
+                inContext.waiting.expecting.cancellable.cancel()
                 inContext.finally?()
             }
         }
     }
 }
 
-public class CombinePublisher: BehavesLikeCombine {}
+public class BehavesLikeCombine<T>: Behavior<T> {
+    public override class func spec(_ aContext: @escaping () -> T) {
+        if let action = aContext as? () -> CombineAction {
+            BehavesLikeCombineChain.spec(action)
+        } else if let expectation = aContext as? () -> CombineTimelyExpectation {
+            BehavesLikeCombineChain.spec {
+                expectation().when()
+            }
+        } else if let expectation = aContext as? () -> CombineExpectation {
+            BehavesLikeCombineChain.spec {
+                expectation().immediately.when()
+            }
+        }
+    }
+}
+
+public class CombinePublisher<T>: BehavesLikeCombine<T> {}

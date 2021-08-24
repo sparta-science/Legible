@@ -57,11 +57,12 @@ class CombineAssignToPublishedSpec: QuickSpec {
                         .shouldReceive(expectedValue: 1) {
                             expect(Thread.current.isMainThread) == false
                         }
-                        .when({
+                        .before(timeout: 1)
+                        .when {
                             DispatchQueue.global().async {
                                 publisher.send(1)
                             }
-                        }, timeout: 1)
+                        }
                 }
             }
         }

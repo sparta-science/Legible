@@ -10,7 +10,6 @@ class BehavesLikeCombineSpec: QuickSpec {
                 itBehavesLike(CombinePublisher.self) {
                     Just("apple")
                         .shouldFinish(expectedValue: "apple")
-                        .immediately
                 }
             }
             context("PassthroughSubject publish when send") {
@@ -21,7 +20,8 @@ class BehavesLikeCombineSpec: QuickSpec {
                 itBehavesLike(CombinePublisher.self) {
                     subject
                         .shouldReceive(expectedValue: "banana")
-                        .when(subject, sends: "banana")
+                        .when(subject)
+                        .sends("banana")
                 }
             }
             context("CurrentValueSubject publish current value") {
@@ -32,7 +32,6 @@ class BehavesLikeCombineSpec: QuickSpec {
                 itBehavesLike(CombinePublisher.self) {
                     subject
                         .shouldReceive(expectedValue: "pear")
-                        .immediately
                         .then {
                             expect(subject.value) == "pear"
                         }
@@ -43,14 +42,12 @@ class BehavesLikeCombineSpec: QuickSpec {
                     itBehavesLike(CombinePublisher.self) {
                         Empty<Any, Never>()
                             .shouldFinish()
-                            .immediately
                     }
                 }
                 context("never publishes") {
                     itBehavesLike(CombinePublisher.self) {
                         Empty<Any, Never>(completeImmediately: false)
                             .shouldNotReceive()
-                            .immediately
                     }
                 }
             }
@@ -60,18 +57,16 @@ class BehavesLikeCombineSpec: QuickSpec {
                 }
                 itBehavesLike(CombinePublisher.self) {
                     Fail<Any,TestFailure>(error: .example)
-                        .shouldFail(expectedError: TestFailure.example)
-                        .immediately
+                        .shouldFail(with: TestFailure.example)
                 }
             }
             context("Sequence publishes all by one and finishes") {
                 itBehavesLike(CombinePublisher.self) {
                     Publishers.Sequence<[Int], Never>(sequence: [1,2,3])
                         .collect(3)
-                        .whenFinished {
+                        .shouldFinish {
                             expect($0) == [1,2,3]
                         }
-                        .immediately
                 }
             }
         }

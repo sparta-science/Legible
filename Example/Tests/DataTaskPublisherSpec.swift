@@ -39,14 +39,30 @@ class DataTaskPublisherSpec: QuickSpec {
                 }
             }
 
-            context("failure retried sends same error") {
-                itBehavesLike(CombinePublisher.self) {
-                    session
-                        .dataTaskPublisher(for: URL(string: "invalid")!)
-                        .retry(2)
-                        .mapError(verifyError)
-                        .shouldFail(expectedError: VerifiedError.expected)
-                        .before(timeout: 10)
+            context("failure") {
+                context("sends same error on background thread") {
+                    itBehavesLike(CombinePublisher.self) {
+                        session
+                            .dataTaskPublisher(for: URL(string: "invalid")!)
+                            .mapError(verifyError)
+                            .shouldFail(with: VerifiedError.expected) {
+                                expect(Thread.isMainThread) == false
+                            }
+                            .before(timeout: 10)
+                            .then {
+                                expect(Thread.isMainThread) == true
+                            }
+                    }
+                }
+                context("retried sends same error") {
+                    itBehavesLike(CombinePublisher.self) {
+                        session
+                            .dataTaskPublisher(for: URL(string: "invalid")!)
+                            .retry(2)
+                            .mapError(verifyError)
+                            .shouldFail(with: VerifiedError.expected)
+                            .before(timeout: 10)
+                    }
                 }
             }
         }
