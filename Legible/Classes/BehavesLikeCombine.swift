@@ -20,7 +20,7 @@ private func expecting(name: String = #function,
                               expectation: expectation)
 }
 
-public extension Publisher where Self.Failure: Error {
+public extension Publisher {
     func shouldFail<T: Error & Equatable>(with expectedError: T,
                                           _ execute: (() -> Void)? = nil,
                                           file: String = #file,
