@@ -8,6 +8,10 @@ public class SnapshotConfiguration {
     public var snapshotsFolderUrl: URL?
     public var maxColorDifference: Float = 0.033
 
+        public static var macOsFolder: String {
+        "macOs-\(ProcessInfo.processInfo.operatingSystemVersion.majorVersion)"
+    }
+
     public func folderUrl(testFile: URL) -> URL {
         if let configured = snapshotsFolderUrl {
             return configured
@@ -15,6 +19,7 @@ public class SnapshotConfiguration {
         return testFile
             .deletingLastPathComponent()
             .appendingPathComponent("Snapshots")
+            .appendingPathComponent(Self.macOsFolder)
     }
 }
 
