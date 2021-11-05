@@ -54,14 +54,23 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                 }
             }
             @discardableResult
-            func overwriteExpectedWithActual() -> Data {
+            func overwriteExpectedWithActualOrSaveToArtifacts() -> Data {
                 let pngData: Data! = bitmap.representation(using: .png, properties: [:])
-                try! pngData.write(to: snapshotUrl)
+                var failedSnapshotFileUrl: URL
+                if let artifactsPath = ProcessInfo.processInfo.environment["SNAPSHOT_ARTIFACTS"] {
+                    let artifactsUrl = URL(fileURLWithPath: artifactsPath, isDirectory: true)
+                    let artifactsSubUrl = artifactsUrl.appendingPathComponent(SnapshotConfiguration.macOsFolder)
+                    try! FileManager.default.createDirectory(at: artifactsSubUrl, withIntermediateDirectories: true)
+                    failedSnapshotFileUrl = artifactsSubUrl.appendingPathComponent(snapshotUrl.lastPathComponent)
+                } else {
+                    failedSnapshotFileUrl = snapshotUrl
+                }
+                try! pngData.write(to: failedSnapshotFileUrl)
                 return pngData
             }
             XCTContext.runActivity(named: "compare png") { activity in
                 guard let oldImage = CIImage(contentsOf: snapshotUrl) else {
-                    overwriteExpectedWithActual()
+                    overwriteExpectedWithActualOrSaveToArtifacts()
                     fail("\(snapshotUrl.lastPathComponent) was missing, now recorded")
                     return
                 }
@@ -84,7 +93,7 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                         diffAttachment.name = "diff-" + snapshotting.name
                         activity.add(diffAttachment)
 
-                        let pngData = overwriteExpectedWithActual()
+                        let pngData = overwriteExpectedWithActualOrSaveToArtifacts()
                         let attachment = XCTAttachment(
                             data: pngData,
                             uniformTypeIdentifier: String(kUTTypePNG)
