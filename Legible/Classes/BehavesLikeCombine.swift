@@ -115,6 +115,12 @@ public extension Publisher {
             }, receiveValue: afterReceiving)
         }
     }
+    func shouldFinishAfterReceivingVoid(file: String = #file,
+                                  line: UInt = #line) -> CombineExpectation where Output == Void {
+        shouldFinish {
+            expect(file: file, line: line, $0) == Void()
+        }
+    }
 }
 
 public struct CombineAction {
