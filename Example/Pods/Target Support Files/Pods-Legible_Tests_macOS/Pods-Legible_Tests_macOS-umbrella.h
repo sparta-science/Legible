@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Legible_TestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Legible_TestsVersionString[];
+FOUNDATION_EXPORT double Pods_Legible_Tests_macOSVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Legible_Tests_macOSVersionString[];
 

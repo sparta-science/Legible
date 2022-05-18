@@ -1,8 +1,7 @@
 use_frameworks!
 
-platform :macos, '11.0'
-
-target 'Legible_Tests' do
+target 'Legible_Tests_macOS' do
+  platform :macos, '11.0'
   pod 'Quick'
   pod 'Nimble'
   pod 'Legible', :path => '../'
