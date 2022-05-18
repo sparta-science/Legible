@@ -1,5 +1,5 @@
 framework module Legible {
-  umbrella header "Legible-umbrella.h"
+  umbrella header "Legible-iOS-umbrella.h"
 
   export *
   module * { export * }
