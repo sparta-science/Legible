@@ -184,6 +184,7 @@ extension UIImage {
 
 extension CIImage {
     func image(size: CGSize) -> UIImage {
+        // size changes is not supported for iOS
         UIImage(ciImage: self)
     }
 }

@@ -60,6 +60,7 @@
 		DA5BA7952836E83B00C64BA9 /* AvatarView-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED17266B664F00724888 /* AvatarView-1.png */; };
 		DA5BA7962836E83E00C64BA9 /* AvatarView-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED18266B664F00724888 /* AvatarView-2.png */; };
 		DA5BA7972836E8D200C64BA9 /* ImageCompareSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2EED1B266B762E00724888 /* ImageCompareSpec.swift */; };
+		DA5BA7992836EDAA00C64BA9 /* DiffPerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A3BED2671F1B4002CBACB /* DiffPerformanceTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -458,6 +459,7 @@
 				DA5BA7802836DBD900C64BA9 /* Init.swift in Sources */,
 				DA5BA7902836E21500C64BA9 /* MatchingSnapshotSpec.swift in Sources */,
 				DA5BA7842836DC7C00C64BA9 /* CombineAssignToPublishedSpec.swift in Sources */,
+				DA5BA7992836EDAA00C64BA9 /* DiffPerformanceTest.swift in Sources */,
 				DA5BA7912836E24300C64BA9 /* HDivider.swift in Sources */,
 				DA5BA7862836DC8E00C64BA9 /* CombineLatestSpec.swift in Sources */,
 			);

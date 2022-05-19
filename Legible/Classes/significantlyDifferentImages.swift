@@ -141,7 +141,7 @@ extension URL {
 #elseif os(iOS)
 extension UIImage {
     convenience init(cgImage: CGImage, size: CGSize) {
-        //TODO: use size
+        // size changes is not supported for iOS
         self.init(cgImage: cgImage)
     }
 }
