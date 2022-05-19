@@ -4,10 +4,13 @@ import Legible
 import SwiftUI
 
 class MatchingSnapshotSpec: QuickSpec {
+    #if os(macOS)
     override class func setUp() {
         super.setUp()
         NSApp.appearance = .init(named: .darkAqua)
     }
+    #endif
+    
     override func spec() {
         describe("matching snapshots") {
             itBehavesLike(MatchingSnapshot.self) {

@@ -9,8 +9,16 @@ public class SnapshotConfiguration {
     public var snapshotsFolderUrl: URL?
     public var maxColorDifference: Float = 0.033
 
-        public static var macOsFolder: String {
-        "macOs-\(ProcessInfo.processInfo.operatingSystemVersion.majorVersion)"
+    private static var operatingSystemName: String {
+        #if os(macOS)
+        "macOs"
+        #elseif os(iOS)
+        "iOs"
+        #endif
+    }
+    
+    public static var operatingSystemFolder: String {
+        "\(operatingSystemName)-\(ProcessInfo.processInfo.operatingSystemVersion.majorVersion)"
     }
 
     public func folderUrl(testFile: URL) -> URL {
@@ -20,7 +28,7 @@ public class SnapshotConfiguration {
         return testFile
             .deletingLastPathComponent()
             .appendingPathComponent("Snapshots")
-            .appendingPathComponent(Self.macOsFolder)
+            .appendingPathComponent(Self.operatingSystemFolder)
     }
 }
 
@@ -75,7 +83,7 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                 var failedSnapshotFileUrl: URL
                 if let artifactsPath = ProcessInfo.processInfo.environment["SNAPSHOT_ARTIFACTS"] {
                     let artifactsUrl = URL(fileURLWithPath: artifactsPath, isDirectory: true)
-                    let artifactsSubUrl = artifactsUrl.appendingPathComponent(SnapshotConfiguration.macOsFolder)
+                    let artifactsSubUrl = artifactsUrl.appendingPathComponent(SnapshotConfiguration.operatingSystemFolder)
                     try! FileManager.default.createDirectory(at: artifactsSubUrl, withIntermediateDirectories: true)
                     failedSnapshotFileUrl = artifactsSubUrl.appendingPathComponent(snapshotUrl.lastPathComponent)
                 } else {

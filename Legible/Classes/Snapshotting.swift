@@ -29,7 +29,7 @@ public struct Preview<T> where T: PreviewProvider {
         self.size = size
         #elseif os(iOS)
         let controller = UIHostingController(rootView: T.previews.fixedSize())
-        self.size = size ?? controller.sizeThatFits(in: CGSize(width: 0.0, height: 0.0))
+        self.size = size ?? controller.sizeThatFits(in: .zero)
         self.view = controller.view
         #endif
     }
@@ -44,11 +44,13 @@ public struct SwiftUIView {
 
     public init<T>(_ someView: T, name: String = String(describing: T.self), size: CGSize? = nil) where T: SwiftUI.View {
         self.name = name
-        self.size = size
         #if os(macOS)
+        self.size = size
         view = NSHostingView(rootView: someView)
         #elseif os(iOS)
-        view = UIHostingController(rootView: someView.fixedSize()).view
+        let controller = UIHostingController(rootView: someView.fixedSize())
+        self.size = size ?? controller.sizeThatFits(in: .zero)
+        self.view = controller.view
         #endif
     }
 }

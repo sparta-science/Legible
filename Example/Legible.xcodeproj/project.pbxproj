@@ -52,6 +52,10 @@
 		DA5BA78C2836DCE000C64BA9 /* PublishedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17B264FBB95007263F2 /* PublishedSpec.swift */; };
 		DA5BA78D2836DCEA00C64BA9 /* ObservableObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */; };
 		DA5BA78E2836DD0300C64BA9 /* DataTaskPublisherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */; };
+		DA5BA7902836E21500C64BA9 /* MatchingSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB630A62665D1030053F84D /* MatchingSnapshotSpec.swift */; };
+		DA5BA7912836E24300C64BA9 /* HDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D19E2664C9B800902F68 /* HDivider.swift */; };
+		DA5BA7922836E25400C64BA9 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D1A32664F59900902F68 /* AvatarView.swift */; };
+		DA5BA7932836E44300C64BA9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A46D1A72664F81F00902F68 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -317,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5BA7932836E44300C64BA9 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,13 +441,16 @@
 				DA5BA7872836DC9100C64BA9 /* CombinePublishedSpec.swift in Sources */,
 				DA5BA7832836DC0E00C64BA9 /* Initializable.swift in Sources */,
 				DA5BA78D2836DCEA00C64BA9 /* ObservableObjectSpec.swift in Sources */,
+				DA5BA7922836E25400C64BA9 /* AvatarView.swift in Sources */,
 				DA5BA7822836DC0B00C64BA9 /* QuickHelper.swift in Sources */,
 				DA5BA7852836DC8B00C64BA9 /* CombineCurrentValueSubjectSpec.swift in Sources */,
 				DA5BA7812836DC0700C64BA9 /* it+behavior.swift in Sources */,
 				DA5BA78A2836DCD100C64BA9 /* FormatterExampleSpec.swift in Sources */,
 				DA5BA78E2836DD0300C64BA9 /* DataTaskPublisherSpec.swift in Sources */,
 				DA5BA7802836DBD900C64BA9 /* Init.swift in Sources */,
+				DA5BA7902836E21500C64BA9 /* MatchingSnapshotSpec.swift in Sources */,
 				DA5BA7842836DC7C00C64BA9 /* CombineAssignToPublishedSpec.swift in Sources */,
+				DA5BA7912836E24300C64BA9 /* HDivider.swift in Sources */,
 				DA5BA7862836DC8E00C64BA9 /* CombineLatestSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
