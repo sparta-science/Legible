@@ -59,6 +59,7 @@
 		DA5BA7942836E68900C64BA9 /* MatchingSnapshotFailureSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AD242267332BA0087E32C /* MatchingSnapshotFailureSpec.swift */; };
 		DA5BA7952836E83B00C64BA9 /* AvatarView-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED17266B664F00724888 /* AvatarView-1.png */; };
 		DA5BA7962836E83E00C64BA9 /* AvatarView-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED18266B664F00724888 /* AvatarView-2.png */; };
+		DA5BA7972836E8D200C64BA9 /* ImageCompareSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2EED1B266B762E00724888 /* ImageCompareSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -442,6 +443,7 @@
 				DA5BA78C2836DCE000C64BA9 /* PublishedSpec.swift in Sources */,
 				DA5BA78B2836DCD400C64BA9 /* BehavesLikeCombineSpec.swift in Sources */,
 				DA5BA7892836DCCE00C64BA9 /* BehavesLikeAsciiTableSpec.swift in Sources */,
+				DA5BA7972836E8D200C64BA9 /* ImageCompareSpec.swift in Sources */,
 				DA5BA77F2836DBC900C64BA9 /* CombineAnySubscriberSpec.swift in Sources */,
 				DA5BA7872836DC9100C64BA9 /* CombinePublishedSpec.swift in Sources */,
 				DA5BA7942836E68900C64BA9 /* MatchingSnapshotFailureSpec.swift in Sources */,
