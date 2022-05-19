@@ -56,6 +56,9 @@
 		DA5BA7912836E24300C64BA9 /* HDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D19E2664C9B800902F68 /* HDivider.swift */; };
 		DA5BA7922836E25400C64BA9 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D1A32664F59900902F68 /* AvatarView.swift */; };
 		DA5BA7932836E44300C64BA9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A46D1A72664F81F00902F68 /* Media.xcassets */; };
+		DA5BA7942836E68900C64BA9 /* MatchingSnapshotFailureSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AD242267332BA0087E32C /* MatchingSnapshotFailureSpec.swift */; };
+		DA5BA7952836E83B00C64BA9 /* AvatarView-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED17266B664F00724888 /* AvatarView-1.png */; };
+		DA5BA7962836E83E00C64BA9 /* AvatarView-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED18266B664F00724888 /* AvatarView-2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -322,6 +325,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA5BA7932836E44300C64BA9 /* Media.xcassets in Resources */,
+				DA5BA7952836E83B00C64BA9 /* AvatarView-1.png in Resources */,
+				DA5BA7962836E83E00C64BA9 /* AvatarView-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +444,7 @@
 				DA5BA7892836DCCE00C64BA9 /* BehavesLikeAsciiTableSpec.swift in Sources */,
 				DA5BA77F2836DBC900C64BA9 /* CombineAnySubscriberSpec.swift in Sources */,
 				DA5BA7872836DC9100C64BA9 /* CombinePublishedSpec.swift in Sources */,
+				DA5BA7942836E68900C64BA9 /* MatchingSnapshotFailureSpec.swift in Sources */,
 				DA5BA7832836DC0E00C64BA9 /* Initializable.swift in Sources */,
 				DA5BA78D2836DCEA00C64BA9 /* ObservableObjectSpec.swift in Sources */,
 				DA5BA7922836E25400C64BA9 /* AvatarView.swift in Sources */,
