@@ -1,6 +1,7 @@
 import Quick
 import Nimble
 import SwiftUI
+import UniformTypeIdentifiers
 
 public class SnapshotConfiguration {
     static public var usedSnapshots = [URL]()
@@ -26,11 +27,23 @@ public class SnapshotConfiguration {
 public class MatchingSnapshot: Behavior<Snapshotting> {
     public static var configuration = SnapshotConfiguration()
 
+    private static func makeWindow() -> Window {
+        #if os(macOS)
+        let window = StandardScaleWindow(scale: Self.configuration.windowScale)
+        window.colorSpace = .sRGB
+        return window
+        #elseif os(iOS)
+        let window = UIWindow()
+        window.isHidden = false
+        return window
+        #endif
+    }
+    
     public override class func spec(_ aContext: @escaping () -> Snapshotting) {
         var snapshotUrl: URL!
-        var window: NSWindow!
-        var subject: NSView!
-        var size: NSSize!
+        var window: Window!
+        var subject: View!
+        var size: CGSize!
         let snapshotting: Snapshotting = aContext()
         beforeEach {
             let exampleFileUrl = URL(fileURLWithPath: $0.example.callsite.file)
@@ -41,26 +54,24 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
 
             SnapshotConfiguration.usedSnapshots.append(snapshotUrl)
             subject = snapshotting.view
-            window = StandardScaleWindow(scale: Self.configuration.windowScale)
-            window.colorSpace = .sRGB
+            window = makeWindow()
+            //TODO: think how to uptimize
+            #if os(macOS)
             window.contentView = subject
             size = snapshotting.size ?? subject.fittingSize
+            #elseif os(iOS)
+            window.addSubview(subject)
+            size = snapshotting.size
+            #endif
         }
 
         it(snapshotting.name + " should match snapshot") {
-            let frame = NSRect(origin: .zero, size: size)
+            let frame = CGRect(origin: .zero, size: size)
             subject.frame = frame
-            let bitmap: NSBitmapImageRep! = subject.bitmapImageRepForCachingDisplay(in: frame)
-            expect(bitmap).notTo(beNil())
-            waitUntil { done in
-                DispatchQueue.main.async {
-                    subject.cacheDisplay(in: frame, to: bitmap)
-                    done()
-                }
-            }
+            let bitmap = subject.bitmap()
             @discardableResult
             func overwriteExpectedWithActualOrSaveToArtifacts() -> Data {
-                let pngData: Data! = bitmap.representation(using: .png, properties: [:])
+                let pngData: Data! = bitmap.pngData()
                 var failedSnapshotFileUrl: URL
                 if let artifactsPath = ProcessInfo.processInfo.environment["SNAPSHOT_ARTIFACTS"] {
                     let artifactsUrl = URL(fileURLWithPath: artifactsPath, isDirectory: true)
@@ -80,28 +91,26 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                     return
                 }
                 autoreleasepool {
-                    let newImage = CIImage(bitmapImageRep: bitmap)!
+                    let newImage = bitmap.ciImage()
                     let diffOperation = diff(oldImage, newImage)
                     let diffOutput = diffOperation.outputImage!
                     if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
                         let existing = XCTAttachment(
                             contentsOfFile: snapshotUrl,
-                            uniformTypeIdentifier: String(kUTTypePNG)
+                            uniformTypeIdentifier: UTType.png.identifier
                         )
                         existing.name = "expected-" + snapshotting.name
                         activity.add(existing)
 
-                        let rep = NSCIImageRep(ciImage: diffOutput)
-                        let diffNSImage = NSImage(size: rep.size)
-                        diffNSImage.addRepresentation(rep)
-                        let diffAttachment = XCTAttachment(image: diffNSImage)
+                        let diffImage = diffOutput.image(size: diffOutput.extent.size)
+                        let diffAttachment = XCTAttachment(image: diffImage)
                         diffAttachment.name = "diff-" + snapshotting.name
                         activity.add(diffAttachment)
 
                         let pngData = overwriteExpectedWithActualOrSaveToArtifacts()
                         let attachment = XCTAttachment(
                             data: pngData,
-                            uniformTypeIdentifier: String(kUTTypePNG)
+                            uniformTypeIdentifier: UTType.png.identifier
                         )
                         attachment.name = "actual-" + snapshotting.name
                         activity.add(attachment)
@@ -112,3 +121,63 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
         }
     }
 }
+
+#if os(macOS)
+extension NSView {
+    func bitmap() -> NSBitmapImageRep {
+        let bitmap: NSBitmapImageRep! = bitmapImageRepForCachingDisplay(in: frame)
+        expect(bitmap).notTo(beNil())
+        waitUntil { done in
+            DispatchQueue.main.async {
+                self.cacheDisplay(in: self.frame, to: bitmap)
+                done()
+            }
+        }
+        return bitmap
+    }
+}
+
+extension NSBitmapImageRep {
+    func pngData() -> Data? {
+        representation(using: .png, properties: [:])
+    }
+    
+    func ciImage() -> CIImage {
+        CIImage(bitmapImageRep: self)!
+    }
+}
+
+extension CIImage {
+    func image(size: CGSize) -> NSImage {
+        let rep = NSCIImageRep(ciImage: self)
+        let nsImage = NSImage(size: size)
+        nsImage.addRepresentation(rep)
+        return nsImage
+    }
+}
+
+#elseif os(iOS)
+extension UIView {
+    func bitmap() -> UIImage {
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let renderer = UIGraphicsImageRenderer(bounds: bounds, format: format)
+        return renderer.image { rendererContext in
+          layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
+extension UIImage {
+    func ciImage() -> CIImage {
+        CIImage(cgImage: self.cgImage!)
+    }
+}
+
+extension CIImage {
+    func image(size: CGSize) -> UIImage {
+        UIImage(ciImage: self)
+    }
+}
+
+#endif

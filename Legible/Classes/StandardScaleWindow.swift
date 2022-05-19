@@ -1,3 +1,4 @@
+#if os(macOS)
 import AppKit
 
 public class StandardScaleWindow: NSWindow {
@@ -21,3 +22,4 @@ public class StandardScaleWindow: NSWindow {
         .init(scale)
     }
 }
+#endif
