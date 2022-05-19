@@ -51,6 +51,7 @@
 		DA5BA78B2836DCD400C64BA9 /* BehavesLikeCombineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D179264FB6BF007263F2 /* BehavesLikeCombineSpec.swift */; };
 		DA5BA78C2836DCE000C64BA9 /* PublishedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17B264FBB95007263F2 /* PublishedSpec.swift */; };
 		DA5BA78D2836DCEA00C64BA9 /* ObservableObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */; };
+		DA5BA78E2836DD0300C64BA9 /* DataTaskPublisherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -439,6 +440,7 @@
 				DA5BA7852836DC8B00C64BA9 /* CombineCurrentValueSubjectSpec.swift in Sources */,
 				DA5BA7812836DC0700C64BA9 /* it+behavior.swift in Sources */,
 				DA5BA78A2836DCD100C64BA9 /* FormatterExampleSpec.swift in Sources */,
+				DA5BA78E2836DD0300C64BA9 /* DataTaskPublisherSpec.swift in Sources */,
 				DA5BA7802836DBD900C64BA9 /* Init.swift in Sources */,
 				DA5BA7842836DC7C00C64BA9 /* CombineAssignToPublishedSpec.swift in Sources */,
 				DA5BA7862836DC8E00C64BA9 /* CombineLatestSpec.swift in Sources */,

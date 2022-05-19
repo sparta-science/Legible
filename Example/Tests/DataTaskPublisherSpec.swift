@@ -25,9 +25,14 @@ class DataTaskPublisherSpec: QuickSpec {
                 var url: URL!
                 var expectedData: Data!
                 beforeEach {
+                    #if os(macOS)
+                    let infoPList = "Contents/Info.plist"
+                    #elseif os(iOS)
+                    let infoPList = "Info.plist"
+                    #endif
                     url = Bundle(for: Self.self)
                         .bundleURL
-                        .appendingPathComponent("Contents/Info.plist")
+                        .appendingPathComponent(infoPList)
                     expectedData = try! Data(contentsOf: url)
                 }
                 itBehavesLike(CombinePublisher.self) {
