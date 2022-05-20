@@ -17,7 +17,7 @@ jobs:
       with:
         xcode-version: latest-stable
     - name: Remove previous test results
-        run: rm -rf test-results || true
+      run: rm -rf test-results || true
     - name: Unit Specs on macOS
       uses: sersoft-gmbh/xcodebuild-action@v1.4
       with:
