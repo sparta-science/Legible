@@ -86,8 +86,6 @@
 		4A81D17B264FBB95007263F2 /* PublishedSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedSpec.swift; sourceTree = "<group>"; };
 		4A81D17D264FBF64007263F2 /* DataTaskPublisherSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskPublisherSpec.swift; sourceTree = "<group>"; };
 		4A81D17F264FE1DD007263F2 /* ObservableObjectSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjectSpec.swift; sourceTree = "<group>"; };
-		4A9AD24026732FAC0087E32C /* Specs.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Specs.xctestplan; sourceTree = "<group>"; };
-		4A9AD24126732FC00087E32C /* Performance.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Performance.xctestplan; sourceTree = "<group>"; };
 		4A9AD242267332BA0087E32C /* MatchingSnapshotFailureSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSnapshotFailureSpec.swift; sourceTree = "<group>"; };
 		4A9AD2442676E43C0087E32C /* SnapshotPerformanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotPerformanceTest.swift; sourceTree = "<group>"; };
 		4BB630A62665D1030053F84D /* MatchingSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSnapshotSpec.swift; sourceTree = "<group>"; };
@@ -206,8 +204,6 @@
 				C353738E268315BF00BE87FB /* CombineLatestSpec.swift */,
 				C353738D268315BF00BE87FB /* CombinePublishedSpec.swift */,
 				C3537390268315BF00BE87FB /* CombineSubscribeOnSpec.swift */,
-				4A9AD24026732FAC0087E32C /* Specs.xctestplan */,
-				4A9AD24126732FC00087E32C /* Performance.xctestplan */,
 				4A46D1A22664F02000902F68 /* Snapshots */,
 				4A81D175264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift */,
 				4A81D177264F9824007263F2 /* FormatterExampleSpec.swift */,
