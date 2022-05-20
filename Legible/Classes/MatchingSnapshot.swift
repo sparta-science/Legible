@@ -63,7 +63,6 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
             SnapshotConfiguration.usedSnapshots.append(snapshotUrl)
             subject = snapshotting.view
             window = makeWindow()
-            //TODO: think how to uptimize
             #if os(macOS)
             window.contentView = subject
             size = snapshotting.size ?? subject.fittingSize
