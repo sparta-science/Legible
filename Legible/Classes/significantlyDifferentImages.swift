@@ -5,8 +5,8 @@ import Accelerate
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-func diff(_ old: Data, _ new: CGImage, size: CGSize) -> Image {
-    diff(Image(data: old)!, Image(cgImage: new, size: size))
+func diff(_ old: Data, _ new: CGImage, size: CGSize) -> SnapshottingImage {
+    diff(SnapshottingImage(data: old)!, SnapshottingImage(cgImage: new, size: size))
 }
 
 func diff(_ old: CGImage, _ new: CGImage) -> CICompositeOperation {
@@ -47,7 +47,7 @@ func histogram(ciImage: CIImage) -> [UInt32] {
     return result
 }
 
-func diff(_ old: Image, _ new: Image) -> Image {
+func diff(_ old: SnapshottingImage, _ new: SnapshottingImage) -> SnapshottingImage {
     let differenceFilter = diff(old.cgImage!, new.cgImage!)
     let unionRect = CGRect(origin: .zero, size: old.size)
         .union(.init(origin: .zero, size: new.size))
@@ -81,14 +81,14 @@ func imageBuffer(cgImage: CGImage) -> vImage_Buffer {
 }
 
 func imageBuffer(data: Data) -> vImage_Buffer {
-    imageBuffer(image: Image(data: data)!)
+    imageBuffer(image: SnapshottingImage(data: data)!)
 }
 func imageBuffer(url: URL) -> vImage_Buffer {
     let image = url.image()
     return imageBuffer(cgImage: image.cgImage!)
 }
 
-func imageBuffer(image: Image) -> vImage_Buffer {
+func imageBuffer(image: SnapshottingImage) -> vImage_Buffer {
     imageBuffer(cgImage: image.cgImage!)
 }
 

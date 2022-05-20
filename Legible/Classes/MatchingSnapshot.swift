@@ -35,7 +35,7 @@ public class SnapshotConfiguration {
 public class MatchingSnapshot: Behavior<Snapshotting> {
     public static var configuration = SnapshotConfiguration()
 
-    private static func makeWindow() -> Window {
+    private static func makeWindow() -> SnapshottingWindow {
         #if os(macOS)
         let window = StandardScaleWindow(scale: Self.configuration.windowScale)
         window.colorSpace = .sRGB
@@ -49,8 +49,8 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
     
     public override class func spec(_ aContext: @escaping () -> Snapshotting) {
         var snapshotUrl: URL!
-        var window: Window!
-        var subject: View!
+        var window: SnapshottingWindow!
+        var subject: SnapshottingView!
         var size: CGSize!
         let snapshotting: Snapshotting = aContext()
         beforeEach {
