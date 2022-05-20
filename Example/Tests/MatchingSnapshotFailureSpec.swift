@@ -40,7 +40,7 @@ class MatchingSnapshotFailureSpec: QuickSpec {
                 beforeEach {
                     snapshotUrl = tempFolder.appendingPathComponent("hello.png")
                     let bundle = Bundle(for: Self.self)
-                    differentImageUrl = bundle.urlForImageResource("AvatarView-1.png")!
+                    differentImageUrl = bundle.url(forResource: "AvatarView-1", withExtension: "png")!
                     try? fileManager.removeItem(at: snapshotUrl)
                     try! fileManager.copyItem(at: differentImageUrl, to: snapshotUrl)
                     let options = XCTExpectedFailure.Options()

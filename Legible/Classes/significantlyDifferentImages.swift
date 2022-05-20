@@ -1,10 +1,12 @@
+#if os(macOS)
 import AppKit
+#endif
 import Accelerate
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-func diff(_ old: Data, _ new: CGImage, size: NSSize) -> NSImage {
-    diff(NSImage(data: old)!, NSImage(cgImage: new, size: size))
+func diff(_ old: Data, _ new: CGImage, size: CGSize) -> SnapshottingImage {
+    diff(SnapshottingImage(data: old)!, SnapshottingImage(cgImage: new, size: size))
 }
 
 func diff(_ old: CGImage, _ new: CGImage) -> CICompositeOperation {
@@ -45,19 +47,12 @@ func histogram(ciImage: CIImage) -> [UInt32] {
     return result
 }
 
-func diff(_ old: NSImage, _ new: NSImage) -> NSImage {
-    let differenceFilter = diff(
-        old.cgImage(forProposedRect: nil, context: nil, hints: nil)!,
-        new.cgImage(forProposedRect: nil, context: nil, hints: nil)!
-    )
+func diff(_ old: SnapshottingImage, _ new: SnapshottingImage) -> SnapshottingImage {
+    let differenceFilter = diff(old.cgImage!, new.cgImage!)
     let unionRect = CGRect(origin: .zero, size: old.size)
         .union(.init(origin: .zero, size: new.size))
-    let unionSize = unionRect.size
 
-    let rep = NSCIImageRep(ciImage: differenceFilter.outputImage!)
-    let difference = NSImage(size: unionSize)
-    difference.addRepresentation(rep)
-    return difference
+    return differenceFilter.outputImage!.image(size: unionRect.size)
 }
 
 func significantlyDifferentImages(_ left: Data, _ right: CGImage) -> Bool {
@@ -86,22 +81,17 @@ func imageBuffer(cgImage: CGImage) -> vImage_Buffer {
 }
 
 func imageBuffer(data: Data) -> vImage_Buffer {
-    imageBuffer(nsImage: NSImage(data: data)!)
+    imageBuffer(image: SnapshottingImage(data: data)!)
 }
 func imageBuffer(url: URL) -> vImage_Buffer {
-    // TODO: fail on unwrap
-    let nsImage = NSImage(contentsOf: url)!
-    return imageBuffer(cgImage: cgImage(nsImage))
+    let image = url.image()
+    return imageBuffer(cgImage: image.cgImage!)
 }
 
-func imageBuffer(nsImage: NSImage) -> vImage_Buffer {
-    imageBuffer(cgImage: cgImage(nsImage))
+func imageBuffer(image: SnapshottingImage) -> vImage_Buffer {
+    imageBuffer(cgImage: image.cgImage!)
 }
 
-
-func cgImage(_ nsImage: NSImage) -> CGImage {
-    nsImage.cgImage(forProposedRect: nil, context: nil, hints: nil)!
-}
 
 func getFormat(_ cgImage: CGImage) -> vImage_CGImageFormat {
     vImage_CGImageFormat(cgImage: cgImage)!
@@ -134,3 +124,32 @@ func floatPixels(_ imageBuffer: inout vImage_Buffer) -> [Float] {
     }
     return floatPixels
 }
+
+#if os(macOS)
+extension NSImage {
+    var cgImage: CGImage? {
+        cgImage(forProposedRect: nil, context: nil, hints: nil)
+    }
+}
+
+extension URL {
+    func image() -> NSImage {
+        NSImage(contentsOf: self)!
+    }
+}
+
+#elseif os(iOS)
+extension UIImage {
+    convenience init(cgImage: CGImage, size: CGSize) {
+        // size changes is not supported for iOS
+        self.init(cgImage: cgImage)
+    }
+}
+
+extension URL {
+    func image() -> UIImage {
+        UIImage(contentsOfFile: path)!
+    }
+}
+
+#endif

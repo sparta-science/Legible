@@ -22,8 +22,8 @@ class DiffPerformanceTest: XCTestCase {
     var image2Url: URL!
 
     override func setUpWithError() throws {
-        image1Url = bundle.urlForImageResource("AvatarView-1.png")!
-        image2Url = bundle.urlForImageResource("AvatarView-2.png")!
+        image1Url = bundle.url(forResource: "AvatarView-1", withExtension: "png")!
+        image2Url = bundle.url(forResource: "AvatarView-2", withExtension: "png")!
     }
 
     func test_CoreImage_AndLoad_Performance() throws {
@@ -52,7 +52,7 @@ class DiffPerformanceTest: XCTestCase {
     func test_vImage_Buffer_Performance() throws {
         let data1 = try! Data(contentsOf: image1Url)
         let data2 = try! Data(contentsOf: image2Url)
-        let cgImage2 = NSBitmapImageRep(data: data2)!.cgImage!
+        let cgImage2 = Bitmap(data: data2)!.cgImage!
 
         XCTAssertNotEqual(data1, data2, "different files")
         XCTAssertFalse(significantlyDifferentImages(data1, cgImage2),
@@ -67,7 +67,7 @@ class DiffPerformanceTest: XCTestCase {
         measure {
             let data1 = try! Data(contentsOf: image1Url)
             let data2 = try! Data(contentsOf: image2Url)
-            let cgImage2 = NSBitmapImageRep(data: data2)!.cgImage!
+            let cgImage2 = Bitmap(data: data2)!.cgImage!
             _ = significantlyDifferentImages(data1, cgImage2)
         }
     }

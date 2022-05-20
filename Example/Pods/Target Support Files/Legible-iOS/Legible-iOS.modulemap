@@ -1,0 +1,6 @@
+framework module Legible {
+  umbrella header "Legible-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

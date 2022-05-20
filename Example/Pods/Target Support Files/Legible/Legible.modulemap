@@ -1,6 +1,0 @@
-framework module Legible {
-  umbrella header "Legible-umbrella.h"
-
-  export *
-  module * { export * }
-}

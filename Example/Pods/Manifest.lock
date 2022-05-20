@@ -1,9 +1,9 @@
 PODS:
-  - Legible (0.1.0):
+  - Legible (0.1.1):
     - Nimble (~> 9.0)
-    - Quick (~> 4.0)
+    - Quick (~> 5.0)
   - Nimble (9.2.0)
-  - Quick (4.0.0)
+  - Quick (5.0.1)
 
 DEPENDENCIES:
   - Legible (from `../`)
@@ -20,10 +20,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Legible: 8d977c381b84b8972c76dbf520cefa5ad15fc74c
+  Legible: 22f57512a1efa2436edb057a39bd8d5c326d9d55
   Nimble: 4f4a345c80b503b3ea13606a4f98405974ee4d0b
-  Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
+  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
 
-PODFILE CHECKSUM: 1834af00648fc84e46e6140842bd5af416a2006d
+PODFILE CHECKSUM: 615a2db69d4ac420182292678e406728a817adae
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
