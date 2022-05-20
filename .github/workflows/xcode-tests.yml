@@ -16,19 +16,21 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1.2.3
       with:
         xcode-version: latest-stable
+    - name: Remove previous test results
+        run: rm -rf test-results || true
     - name: Unit Specs on macOS
       uses: sersoft-gmbh/xcodebuild-action@v1.4
       with:
         workspace: Example/Legible.xcworkspace
         scheme: Legible_Tests_macOS
-        result-bundle-path: test-results/unit-specs
+        result-bundle-path: test-results/unit-specs-macos
         build-settings: -test-timeouts-enabled YES
     - name: Unit Specs on iOS
       uses: sersoft-gmbh/xcodebuild-action@v1.4
       with:
         workspace: Example/Legible.xcworkspace
         scheme: Legible_Tests_iOS
-        result-bundle-path: test-results/unit-specs
+        result-bundle-path: test-results/unit-specs-ios
         destination: platform=iOS Simulator,name=iPad (9th generation)
         build-settings: -test-timeouts-enabled YES
     - name: Performance Tests
