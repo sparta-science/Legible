@@ -10,6 +10,7 @@
 		4A2EED19266B664F00724888 /* AvatarView-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED17266B664F00724888 /* AvatarView-1.png */; };
 		4A2EED1A266B664F00724888 /* AvatarView-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2EED18266B664F00724888 /* AvatarView-2.png */; };
 		4A2EED1C266B762E00724888 /* ImageCompareSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2EED1B266B762E00724888 /* ImageCompareSpec.swift */; };
+		4A3F9A4928414AB50026984F /* CombineCollectOptimizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3F9A4828414AB50026984F /* CombineCollectOptimizationSpec.swift */; };
 		4A46D19B2663360F00902F68 /* SwiftUISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D19A2663360F00902F68 /* SwiftUISpec.swift */; };
 		4A46D19F2664C9B800902F68 /* HDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D19E2664C9B800902F68 /* HDivider.swift */; };
 		4A46D1A42664F59900902F68 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D1A32664F59900902F68 /* AvatarView.swift */; };
@@ -73,6 +74,7 @@
 		4A2EED17266B664F00724888 /* AvatarView-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AvatarView-1.png"; sourceTree = "<group>"; };
 		4A2EED18266B664F00724888 /* AvatarView-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AvatarView-2.png"; sourceTree = "<group>"; };
 		4A2EED1B266B762E00724888 /* ImageCompareSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompareSpec.swift; sourceTree = "<group>"; };
+		4A3F9A4828414AB50026984F /* CombineCollectOptimizationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCollectOptimizationSpec.swift; sourceTree = "<group>"; };
 		4A46D19A2663360F00902F68 /* SwiftUISpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISpec.swift; sourceTree = "<group>"; };
 		4A46D19E2664C9B800902F68 /* HDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDivider.swift; sourceTree = "<group>"; };
 		4A46D1A22664F02000902F68 /* Snapshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Snapshots; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				C353738E268315BF00BE87FB /* CombineLatestSpec.swift */,
 				C353738D268315BF00BE87FB /* CombinePublishedSpec.swift */,
 				C3537390268315BF00BE87FB /* CombineSubscribeOnSpec.swift */,
+				4A3F9A4828414AB50026984F /* CombineCollectOptimizationSpec.swift */,
 				4A46D1A22664F02000902F68 /* Snapshots */,
 				4A81D175264F912E007263F2 /* BehavesLikeAsciiTableSpec.swift */,
 				4A81D177264F9824007263F2 /* FormatterExampleSpec.swift */,
@@ -475,6 +478,7 @@
 				4A2EED1C266B762E00724888 /* ImageCompareSpec.swift in Sources */,
 				C324825C2683411800037566 /* it+behavior.swift in Sources */,
 				4A46D1A42664F59900902F68 /* AvatarView.swift in Sources */,
+				4A3F9A4928414AB50026984F /* CombineCollectOptimizationSpec.swift in Sources */,
 				C3537395268315C000BE87FB /* CombineLatestSpec.swift in Sources */,
 				4A9AD243267332BA0087E32C /* MatchingSnapshotFailureSpec.swift in Sources */,
 				4A4A3BEE2671F1B4002CBACB /* DiffPerformanceTest.swift in Sources */,
