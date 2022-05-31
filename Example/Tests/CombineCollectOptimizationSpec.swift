@@ -37,7 +37,6 @@ class CombineCollectOptimizationSpec: QuickSpec {
                     let methodFinish = Date()
                     let executionTime = methodFinish.timeIntervalSince(methodStart)
                     print("Unoptimized execution time: \(executionTime)")
-                    expect(executionTime).to(beGreaterThan(0.43))
                 }
             }
             context("with collect") {
@@ -60,7 +59,6 @@ class CombineCollectOptimizationSpec: QuickSpec {
                     let methodFinish = Date()
                     let executionTime = methodFinish.timeIntervalSince(methodStart)
                     print("Optimized execution time: \(executionTime)")
-                    expect(executionTime).to(beLessThan(0.06))
                 }
             }
         }
