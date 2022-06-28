@@ -169,9 +169,17 @@ extension UIView {
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1
         let renderer = UIGraphicsImageRenderer(bounds: bounds, format: format)
-        return renderer.image { rendererContext in
-          layer.render(in: rendererContext.cgContext)
+        
+        var image: UIImage?
+        waitUntil { done in
+            DispatchQueue.main.async {
+                image = renderer.image { rendererContext in
+                    self.layer.render(in: rendererContext.cgContext)
+                }
+                done()
+            }
         }
+        return image!
     }
 }
 
