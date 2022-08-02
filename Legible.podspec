@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Legible'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'Quick and Nimble Behaviors and Helpers'
   s.description      = <<-DESC
 Set of Quick and Nimble Behaviors and Helpers
@@ -23,6 +23,6 @@ to make spec more readable
   s.weak_framework = 'XCTest'
   s.cocoapods_version = '>= 1.4.0'
   s.swift_versions = ['5.0']
-  s.dependency 'Nimble', '~> 9.0'
-  s.dependency 'Quick', '~> 5.0'
+  s.dependency 'Nimble'
+  s.dependency 'Quick'
 end
