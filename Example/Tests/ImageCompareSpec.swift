@@ -58,13 +58,15 @@ class ImageCompareSpec: QuickSpec {
                             let ratioHistogram = diffHistogram.map {
                                 Double($0) / Double(totalPixels)
                             }
-                            expect(ratioHistogram).to(beCloseTo([
+                            let expectedHistogram = [
                                 0.9512, 0.9814, 0.9957, 0,
                                 0.0488, 0.0186, 0.0043
-                            ] + .init(repeating: 0.0, count: 64 * 4 - 8)
-                            + [1.0], within: 0.008)) // should be 0.001 <-- clarify why histogram on Monterey produce different results
+                            ] +
+                            Array(repeating: 0.0, count: 64 * 4 - 8) +
+                            [1.0]
+                            
+                            expect(ratioHistogram).to(beCloseTo(expectedHistogram, within: 0.008)) // should be 0.001 <-- clarify why histogram on Monterey produce different results
                         }
-
                         context("maxColorDiff") {
                             it("should be 1.5%") {
                                 expect(maxColorDiff(histogram: diffHistogram)) ≈ 0.0156
