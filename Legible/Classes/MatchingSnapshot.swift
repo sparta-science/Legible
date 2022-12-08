@@ -7,7 +7,13 @@ public class SnapshotConfiguration {
     static public var usedSnapshots = [URL]()
     public var windowScale = 1
     public var snapshotsFolderUrl: URL?
-    public var maxColorDifference: Float = 0.033
+    public var maxColorDifference: Float {
+        #if os(iOS)
+        0.15
+        #else
+        0.033
+        #endif
+    }
 
     private static var operatingSystemName: String {
         #if os(macOS)
