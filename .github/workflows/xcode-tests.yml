@@ -31,7 +31,7 @@ jobs:
         workspace: Example/Legible.xcworkspace
         scheme: Legible_Tests_iOS
         result-bundle-path: test-results/unit-specs-ios
-        destination: platform=iOS Simulator,name=iPad (9th generation)
+        destination: platform=iOS Simulator,name=iPad (10th generation)
         build-settings: -test-timeouts-enabled YES
     - name: Save Performance baselines
       run: cp -R Example/Legible.xcodeproj/xcshareddata/xcbaselines ./test-results/
