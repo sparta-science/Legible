@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Legible'
-  s.version          = '0.2.1'
+  s.version          = '0.3.0'
   s.summary          = 'Quick and Nimble Behaviors and Helpers'
   s.description      = <<-DESC
 Set of Quick and Nimble Behaviors and Helpers
