@@ -9,14 +9,14 @@ func diff(_ old: Data, _ new: CGImage, size: CGSize) -> SnapshottingImage {
     diff(SnapshottingImage(data: old)!, SnapshottingImage(cgImage: new, size: size))
 }
 
-func diff(_ old: CGImage, _ new: CGImage) -> CICompositeOperation {
+func diff(_ old: CGImage, _ new: CGImage) -> CIFilter & CIColorAbsoluteDifference {
     diff(CIImage(cgImage: old), CIImage(cgImage: new))
 }
 
-func diff(_ old: CIImage, _ new: CIImage) -> CICompositeOperation {
-    let differenceFilter: CICompositeOperation = CIFilter.differenceBlendMode()
+func diff(_ old: CIImage, _ new: CIImage) -> CIFilter & CIColorAbsoluteDifference {
+    let differenceFilter = CIFilter.colorAbsoluteDifference()
     differenceFilter.inputImage = old
-    differenceFilter.backgroundImage = new
+    differenceFilter.inputImage2 = new
     return differenceFilter
 }
 

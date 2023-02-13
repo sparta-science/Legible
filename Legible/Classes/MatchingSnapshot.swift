@@ -107,7 +107,8 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
                     let newImage = bitmap.ciImage()
                     let diffOperation = diff(oldImage, newImage)
                     let diffOutput = diffOperation.outputImage!
-                    if maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
+                    if newImage.extent != oldImage.extent
+                        || maxColorDiff(histogram: histogram(ciImage: diffOutput)) > configuration.maxColorDifference {
                         let existing = XCTAttachment(
                             contentsOfFile: snapshotUrl,
                             uniformTypeIdentifier: UTType.png.identifier
