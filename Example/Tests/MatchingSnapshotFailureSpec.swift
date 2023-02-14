@@ -53,7 +53,12 @@ class MatchingSnapshotFailureSpec: QuickSpec {
 
                 }
                 itBehavesLike(MatchingSnapshot.self) {
-                    SwiftUIView(Text("hello").background(Color.black), name: "hello")
+                    SwiftUIView(
+                        Text("hello")
+                            .frame(width: 70, height: 70)
+                            .background(Color.black),
+                        name: "hello"
+                    )
                 }
                 afterEach {
                     let expected = try! Data(contentsOf: differentImageUrl)
