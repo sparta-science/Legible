@@ -1,5 +1,5 @@
 PODS:
-  - Legible (0.2.1):
+  - Legible (0.3.2):
     - Nimble
     - Quick
   - Nimble (10.0.0)
@@ -20,10 +20,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Legible: 00c9208d312d345f826b0723927b7d4cf47c4138
+  Legible: 8ac1b4939b001914591f338133b87f55eb63a31f
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
 
 PODFILE CHECKSUM: 615a2db69d4ac420182292678e406728a817adae
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

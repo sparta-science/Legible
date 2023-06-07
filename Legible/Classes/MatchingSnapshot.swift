@@ -86,7 +86,7 @@ public class MatchingSnapshot: Behavior<Snapshotting> {
             func overwriteExpectedWithActualOrSaveToArtifacts() -> Data {
                 let pngData: Data! = bitmap.pngData()
                 var failedSnapshotFileUrl: URL
-                if let artifactsPath = ProcessInfo.processInfo.environment["SNAPSHOT_ARTIFACTS"] {
+                if let artifactsPath = ProcessInfo.processInfo.environment["SNAPSHOT_ARTIFACTS"], !artifactsPath.isEmpty {
                     let artifactsUrl = URL(fileURLWithPath: artifactsPath, isDirectory: true)
                     let artifactsSubUrl = artifactsUrl.appendingPathComponent(SnapshotConfiguration.operatingSystemFolder)
                     try! FileManager.default.createDirectory(at: artifactsSubUrl, withIntermediateDirectories: true)
