@@ -1,4 +1,4 @@
-name: XCode Tests
+name: Xcode Tests
 
 on:
   pull_request:
@@ -6,11 +6,10 @@ on:
 
 jobs:
   build:
-    runs-on: [M1, monterey]
-
+    runs-on: silicon-mini
     steps:
     - name: Checkout
-      uses: actions/checkout@v2.3.4
+      uses: actions/checkout@v3
     - name: Setup Xcode version
       uses: maxim-lobanov/setup-xcode@v1.2.3
       with:
@@ -18,14 +17,14 @@ jobs:
     - name: Remove previous test results
       run: rm -rf test-results || true
     - name: Unit Specs on macOS
-      uses: sersoft-gmbh/xcodebuild-action@v1.4
+      uses: sersoft-gmbh/xcodebuild-action@v3
       with:
         workspace: Example/Legible.xcworkspace
         scheme: Legible_Tests_macOS
         result-bundle-path: test-results/unit-specs-macos
         build-settings: -test-timeouts-enabled YES
     - name: Unit Specs on iOS
-      uses: sersoft-gmbh/xcodebuild-action@v1.4
+      uses: sersoft-gmbh/xcodebuild-action@v3
       with:
         workspace: Example/Legible.xcworkspace
         scheme: Legible_Tests_iOS
@@ -40,7 +39,7 @@ jobs:
         -exec cp {} ./test-results \; || true
     - name: Upload test results
       if: always()
-      uses: actions/upload-artifact@v2.2.3
+      uses: actions/upload-artifact@v3
       with:
         name: test-results
         path: test-results

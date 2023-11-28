@@ -14,7 +14,7 @@ class MatchingSnapshotSpec: QuickSpec {
     override func spec() {
         describe("matching snapshots") {
             itBehavesLike(MatchingSnapshot.self) {
-                Preview<HDivider_Previews>()
+                Preview(HDivider_Previews.self)
             }
             itBehavesLike(MatchingSnapshot.self) {
                 SwiftUIView(
@@ -26,7 +26,7 @@ class MatchingSnapshotSpec: QuickSpec {
                 )
             }
             itBehavesLike(MatchingSnapshot.self) {
-                Preview<AvatarView_Previews>()
+                Preview(AvatarView_Previews.self)
             }
         }
     }
