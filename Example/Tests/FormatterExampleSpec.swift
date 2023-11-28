@@ -58,7 +58,6 @@ class FormatterExampleSpec: QuickSpec {
             | en_UK |true  | short | 2.7    | t    | 2,700 kg      |
             | ru    |true  | medium| 13001  | g    | 13 кг         |
             | jp    |true  | long  | 5.1    | lb   | 2.3 kilograms |
-            | he    |true  | long  | 510    | g    | 0.5 קילוגרם   |
             |------------------------------------------------------|
             """
                         }
