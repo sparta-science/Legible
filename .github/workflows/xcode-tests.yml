@@ -22,7 +22,7 @@ jobs:
         workspace: Example/Legible.xcworkspace
         scheme: Legible_Tests_macOS
         result-bundle-path: test-results/unit-specs-macos
-        build-settings: -test-timeouts-enabled YES
+        build-settings: -test-timeouts-enabled YES -collect-test-diagnostics never
     - name: Unit Specs on iOS
       uses: sersoft-gmbh/xcodebuild-action@v3
       with:
@@ -30,7 +30,7 @@ jobs:
         scheme: Legible_Tests_iOS
         result-bundle-path: test-results/unit-specs-ios
         destination: platform=iOS Simulator,name=iPad (10th generation)
-        build-settings: -test-timeouts-enabled YES
+        build-settings: -test-timeouts-enabled YES -collect-test-diagnostics never
     - name: Save Performance baselines
       run: cp -R Example/Legible.xcodeproj/xcshareddata/xcbaselines ./test-results/
     - name: Save crash reports created since test-results
