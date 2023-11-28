@@ -359,14 +359,14 @@
 		26B304E77E6B2CE36E272A345DE35484 /* Pods-Legible_Tests_macOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Legible_Tests_macOS-frameworks.sh"; sourceTree = "<group>"; };
 		26C2CFC8D89CC39A30D24856FCDDD101 /* shouldCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = shouldCall.swift; path = Legible/Classes/shouldCall.swift; sourceTree = "<group>"; };
 		27D08C5F562B45952F96DE230D2F1979 /* FailureMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FailureMessage.swift; path = Sources/Nimble/FailureMessage.swift; sourceTree = "<group>"; };
-		289E21AE311695CB49B911BE5A7C8645 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		289E21AE311695CB49B911BE5A7C8645 /* Quick-macOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Quick-macOS"; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B52654086610975746FCFDF665BF0C1 /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		2C0D3B7F45B6FAA04029EC5FA055E67B /* Legible-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Legible-iOS.modulemap"; sourceTree = "<group>"; };
 		2E353274DB40D1A44AF0A533E61F53C7 /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		2E8E314EB2C1727E065DB15408F28F96 /* Legible-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "Legible-macOS.modulemap"; path = "../Legible-macOS/Legible-macOS.modulemap"; sourceTree = "<group>"; };
 		301A2B2C5685EA9F2A4DFFA93AC9C2E3 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		30A228E89656DE4EB2E77B3D2A185D6D /* Equal+Tuple.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Equal+Tuple.swift"; path = "Sources/Nimble/Matchers/Equal+Tuple.swift"; sourceTree = "<group>"; };
-		30A25752383870CA7B1FD636A3C9CECD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		30A25752383870CA7B1FD636A3C9CECD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		31AAC9C09247546ADCDEBF53D7F6EEB4 /* String+C99ExtendedIdentifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+C99ExtendedIdentifier.swift"; path = "Sources/Quick/String+C99ExtendedIdentifier.swift"; sourceTree = "<group>"; };
 		32C1034BC49050678E480C69DEA858C8 /* QuickTestObservation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestObservation.swift; path = Sources/Quick/QuickTestObservation.swift; sourceTree = "<group>"; };
 		333E01C01B98610AB0AA7AE4CBC70F70 /* Quick-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Quick-macOS-Info.plist"; path = "../Quick-macOS/Quick-macOS-Info.plist"; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 		9168D318C26BF082AE8826C538449D6F /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		919EF8721E8D163D2789639ECE51AC33 /* SatisfyAllOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAllOf.swift; path = Sources/Nimble/Matchers/SatisfyAllOf.swift; sourceTree = "<group>"; };
 		91C6A9C176168B99DC35DF8AFC260B73 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
-		91EA37171A1FF58469296B5A23BDFEBC /* Legible.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Legible.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91EA37171A1FF58469296B5A23BDFEBC /* Legible-macOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Legible-macOS"; path = Legible.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C51955283D8F4C38CDD9F78C05DB90 /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
 		93D187232EB14ED64845D4A168BA50EA /* Nimble-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "Nimble-macOS.modulemap"; path = "../Nimble-macOS/Nimble-macOS.modulemap"; sourceTree = "<group>"; };
 		94CA369ED3493B06A839C13A21063313 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
@@ -452,7 +452,7 @@
 		99755074886FD45264D821F1A0EE8FC9 /* QCKConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QCKConfiguration.swift; path = Sources/Quick/Configuration/QCKConfiguration.swift; sourceTree = "<group>"; };
 		99D841FAC43D77E2F4E181C547478DA6 /* QuickSpecBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpecBase.m; path = Sources/QuickObjCRuntime/QuickSpecBase.m; sourceTree = "<group>"; };
 		9D03F1228CCAE3400A95730FCF29C744 /* Pods-Legible_Tests_iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Legible_Tests_iOS"; path = Pods_Legible_Tests_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0E6AE197DFA8BF720514B51DCFE6DBA /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
 		A0F221F885C5D76EEFCA4F3E543E391B /* Pods-Legible_Tests_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Legible_Tests_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A3388B8DA1C058C326CAF5B084A41E32 /* Quick-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Quick-macOS.release.xcconfig"; path = "../Quick-macOS/Quick-macOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -485,12 +485,12 @@
 		BFA92C3193D9E9DD7569A526E519D8D8 /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAnyOf.swift; path = Sources/Nimble/Matchers/SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		C156BDC12C8F38771DDEB8D29B43664B /* Legible-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Legible-macOS-umbrella.h"; path = "../Legible-macOS/Legible-macOS-umbrella.h"; sourceTree = "<group>"; };
 		C2143AFFE208C29328780311B31C889D /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/QuickObjectiveC/DSL/QCKDSL.h; sourceTree = "<group>"; };
-		C2FCA34B3522D944BAA3DC6A57D99686 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2FCA34B3522D944BAA3DC6A57D99686 /* Nimble-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Nimble-iOS"; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD64E5DE25F47BD8C8F8656DFD203D /* Pods-Legible_Tests_macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Legible_Tests_macOS-Info.plist"; sourceTree = "<group>"; };
 		C4E1A74E282E87E15BE75070FD387FB0 /* Legible-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Legible-macOS-prefix.pch"; path = "../Legible-macOS/Legible-macOS-prefix.pch"; sourceTree = "<group>"; };
 		C73B6FC2439449E1810E74264F95CA3B /* Legible-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Legible-iOS-Info.plist"; sourceTree = "<group>"; };
 		C8CE881CCD5E7C7C5A980847FC171EAE /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchExceptionSupport/include/CwlCatchException.h; sourceTree = "<group>"; };
-		C8E0F49D3F9CF6715FD8D2D98638F20F /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8E0F49D3F9CF6715FD8D2D98638F20F /* Quick-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Quick-iOS"; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C944B3213D7D72610C75C66673086F88 /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
 		CA62B7632336E76D9686E065D35DB8F1 /* Nimble-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Nimble-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		CB625EF2A321D3EA73A551B4E1DEABC1 /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
@@ -498,7 +498,7 @@
 		CD5CE9448A5C4B42851511EC9EF26D6F /* Pods-Legible_Tests_macOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Legible_Tests_macOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		CEFF5EFDC5AA42E58A5907879622C7AD /* Pods-Legible_Tests_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Legible_Tests_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D1BE27A1FA8CDE920516E48A603E71C5 /* DispatchTimeInterval.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DispatchTimeInterval.swift; path = Sources/Nimble/Utils/DispatchTimeInterval.swift; sourceTree = "<group>"; };
-		D3CD12AA75B4DEB0698D2B0E60610FD5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D3CD12AA75B4DEB0698D2B0E60610FD5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		DA26ED48A53B7CC98F69A41A8E498F75 /* MatchError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchError.swift; path = Sources/Nimble/Matchers/MatchError.swift; sourceTree = "<group>"; };
 		DC2609BBECD94E7B101B095A182B97EA /* Nimble-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Nimble-macOS-prefix.pch"; path = "../Nimble-macOS/Nimble-macOS-prefix.pch"; sourceTree = "<group>"; };
 		DD8386AF599E7D85BDCE8D417934FB5A /* Legible-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Legible-iOS-dummy.m"; sourceTree = "<group>"; };
@@ -507,14 +507,14 @@
 		E418AC9F28F970677BD37A30C614FB2F /* Quick-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-iOS-dummy.m"; sourceTree = "<group>"; };
 		E47C7356265C693E885C1D6F669A65F0 /* BehavesLikeTable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BehavesLikeTable.swift; path = Legible/Classes/BehavesLikeTable.swift; sourceTree = "<group>"; };
 		E8251DFDABD646A01E4122598284AA6B /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
-		E9A1BE1BDCFC9EB56CEF315D7CF5F953 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
+		E9A1BE1BDCFC9EB56CEF315D7CF5F953 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
 		EC941C25B0C41C1DA71C6471C17F18BD /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
 		ED7C2293729DD4449A9FD0A658C73383 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		EDA5EA0E3A953F937A22E83C40146012 /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
 		EFBEDE57C6988D5657CDD25F81FDE226 /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
 		F32A2828C5B3BFA78A71892E542B03FA /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Quick/DSL/DSL.swift; sourceTree = "<group>"; };
 		F3A4D23986DA70478C0C8F3EFB90C048 /* Pods-Legible_Tests_iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Legible_Tests_iOS-frameworks.sh"; sourceTree = "<group>"; };
-		F4F348027847147F83A6E999B942456C /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4F348027847147F83A6E999B942456C /* Nimble-macOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Nimble-macOS"; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F590A5DAC3480CACFE18F47C51B216DF /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		F68881009D0B037655574C30722BD99D /* BeNil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeNil.swift; path = Sources/Nimble/Matchers/BeNil.swift; sourceTree = "<group>"; };
 		FC0D49F802A133E2FB442DA9157BB49A /* StandardScaleWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StandardScaleWindow.swift; path = Legible/Classes/StandardScaleWindow.swift; sourceTree = "<group>"; };
@@ -523,7 +523,7 @@
 		FE8AA0168F218C665ACECF8AD3DD5685 /* MatcherProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherProtocols.swift; path = Sources/Nimble/Matchers/MatcherProtocols.swift; sourceTree = "<group>"; };
 		FEA0C9A25F94A7FF9F024471CE0E9F90 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		FF55B5766D0B37308323C11AA23CF6A8 /* Behavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Behavior.swift; path = Sources/Quick/Behavior.swift; sourceTree = "<group>"; };
-		FF793950154B65E7439650ECEE9F2A40 /* Legible.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Legible.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FF793950154B65E7439650ECEE9F2A40 /* Legible.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Legible.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -672,6 +672,7 @@
 				36E9AA1153C8E7D19BE7E3192C2E6F2C /* XCTestObservationCenter+Register.m */,
 				DC3037C018F4AFEF1511B9AE9A550464 /* Support Files */,
 			);
+			name = Nimble;
 			path = Nimble;
 			sourceTree = "<group>";
 		};
@@ -713,6 +714,7 @@
 				41BEA7ADFD747B0E0BBFBC8EA5EAD02F /* XCTestSuite+QuickTestSuiteBuilder.m */,
 				9907A8593A052796A6A4CEA68C520FAE /* Support Files */,
 			);
+			name = Quick;
 			path = Quick;
 			sourceTree = "<group>";
 		};
@@ -765,13 +767,13 @@
 			isa = PBXGroup;
 			children = (
 				1249630E53C0D59E8D5F5E95B6E6763A /* Legible-iOS */,
-				91EA37171A1FF58469296B5A23BDFEBC /* Legible.framework */,
-				C2FCA34B3522D944BAA3DC6A57D99686 /* Nimble.framework */,
-				F4F348027847147F83A6E999B942456C /* Nimble.framework */,
+				91EA37171A1FF58469296B5A23BDFEBC /* Legible-macOS */,
+				C2FCA34B3522D944BAA3DC6A57D99686 /* Nimble-iOS */,
+				F4F348027847147F83A6E999B942456C /* Nimble-macOS */,
 				9D03F1228CCAE3400A95730FCF29C744 /* Pods-Legible_Tests_iOS */,
 				B0EA8A2BF340D078CC0E24AC09C21A2C /* Pods-Legible_Tests_macOS */,
-				C8E0F49D3F9CF6715FD8D2D98638F20F /* Quick.framework */,
-				289E21AE311695CB49B911BE5A7C8645 /* Quick.framework */,
+				C8E0F49D3F9CF6715FD8D2D98638F20F /* Quick-iOS */,
+				289E21AE311695CB49B911BE5A7C8645 /* Quick-macOS */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1036,7 +1038,7 @@
 			);
 			name = "Quick-macOS";
 			productName = Quick;
-			productReference = 289E21AE311695CB49B911BE5A7C8645 /* Quick.framework */;
+			productReference = 289E21AE311695CB49B911BE5A7C8645 /* Quick-macOS */;
 			productType = "com.apple.product-type.framework";
 		};
 		16A86F0E5B028C66B04EEA9E4CA329D0 /* Legible-macOS */ = {
@@ -1056,7 +1058,7 @@
 			);
 			name = "Legible-macOS";
 			productName = Legible;
-			productReference = 91EA37171A1FF58469296B5A23BDFEBC /* Legible.framework */;
+			productReference = 91EA37171A1FF58469296B5A23BDFEBC /* Legible-macOS */;
 			productType = "com.apple.product-type.framework";
 		};
 		3AAFED87F58BAA2AC3177A35C2CF5B23 /* Nimble-iOS */ = {
@@ -1074,7 +1076,7 @@
 			);
 			name = "Nimble-iOS";
 			productName = Nimble;
-			productReference = C2FCA34B3522D944BAA3DC6A57D99686 /* Nimble.framework */;
+			productReference = C2FCA34B3522D944BAA3DC6A57D99686 /* Nimble-iOS */;
 			productType = "com.apple.product-type.framework";
 		};
 		89B29D1C701EFC639B36BC482FE72F13 /* Quick-iOS */ = {
@@ -1092,7 +1094,7 @@
 			);
 			name = "Quick-iOS";
 			productName = Quick;
-			productReference = C8E0F49D3F9CF6715FD8D2D98638F20F /* Quick.framework */;
+			productReference = C8E0F49D3F9CF6715FD8D2D98638F20F /* Quick-iOS */;
 			productType = "com.apple.product-type.framework";
 		};
 		CE25E8E14A7E2186A2024BBF12E7A166 /* Pods-Legible_Tests_iOS */ = {
@@ -1152,7 +1154,7 @@
 			);
 			name = "Nimble-macOS";
 			productName = Nimble;
-			productReference = F4F348027847147F83A6E999B942456C /* Nimble.framework */;
+			productReference = F4F348027847147F83A6E999B942456C /* Nimble-macOS */;
 			productType = "com.apple.product-type.framework";
 		};
 		FDEAE7C9CE153008678B88713C74FC7D /* Legible-iOS */ = {
@@ -1617,7 +1619,7 @@
 				INFOPLIST_FILE = "Target Support Files/Nimble-macOS/Nimble-macOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Nimble-macOS/Nimble-macOS.modulemap";
 				PRODUCT_MODULE_NAME = Nimble;
 				PRODUCT_NAME = Nimble;
@@ -1681,7 +1683,7 @@
 				INFOPLIST_FILE = "Target Support Files/Quick-macOS/Quick-macOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Quick-macOS/Quick-macOS.modulemap";
 				PRODUCT_MODULE_NAME = Quick;
 				PRODUCT_NAME = Quick;
@@ -1712,7 +1714,7 @@
 				INFOPLIST_FILE = "Target Support Files/Nimble-macOS/Nimble-macOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Nimble-macOS/Nimble-macOS.modulemap";
 				PRODUCT_MODULE_NAME = Nimble;
 				PRODUCT_NAME = Nimble;
@@ -1776,7 +1778,7 @@
 				INFOPLIST_FILE = "Target Support Files/Quick-macOS/Quick-macOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Quick-macOS/Quick-macOS.modulemap";
 				PRODUCT_MODULE_NAME = Quick;
 				PRODUCT_NAME = Quick;
@@ -1807,7 +1809,7 @@
 				INFOPLIST_FILE = "Target Support Files/Legible-macOS/Legible-macOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MODULEMAP_FILE = "Target Support Files/Legible-macOS/Legible-macOS.modulemap";
 				PRODUCT_MODULE_NAME = Legible;
 				PRODUCT_NAME = Legible;
@@ -1876,7 +1878,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -2098,7 +2101,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Nimble-iOS/Nimble-iOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Nimble-iOS/Nimble-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Nimble-iOS/Nimble-iOS.modulemap";
 				PRODUCT_MODULE_NAME = Nimble;
@@ -2128,7 +2131,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Quick-iOS/Quick-iOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Quick-iOS/Quick-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Quick-iOS/Quick-iOS.modulemap";
 				PRODUCT_MODULE_NAME = Quick;
@@ -2158,7 +2161,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Nimble-iOS/Nimble-iOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Nimble-iOS/Nimble-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Nimble-iOS/Nimble-iOS.modulemap";
 				PRODUCT_MODULE_NAME = Nimble;
@@ -2192,7 +2195,7 @@
 				INFOPLIST_FILE = "Target Support Files/Legible-macOS/Legible-macOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MODULEMAP_FILE = "Target Support Files/Legible-macOS/Legible-macOS.modulemap";
 				PRODUCT_MODULE_NAME = Legible;
 				PRODUCT_NAME = Legible;
@@ -2220,7 +2223,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Quick-iOS/Quick-iOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Quick-iOS/Quick-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Quick-iOS/Quick-iOS.modulemap";
 				PRODUCT_MODULE_NAME = Quick;

@@ -1,6 +1,6 @@
 {
   "name": "Legible",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "summary": "Quick and Nimble Behaviors and Helpers",
   "description": "Set of Quick and Nimble Behaviors and Helpers\nto make spec more readable",
   "homepage": "https://github.com/sparta-science/Legible",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/sparta-science/Legible.git",
-    "tag": "0.3.2"
+    "tag": "0.4.0"
   },
   "platforms": {
     "ios": "14.0",
