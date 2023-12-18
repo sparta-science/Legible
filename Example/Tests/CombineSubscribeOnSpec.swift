@@ -3,7 +3,7 @@ import Legible
 import Quick
 
 class CombineSubscribeOnSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe(".subscribe(on:)") {
             var subject: Connection!
             beforeEach {

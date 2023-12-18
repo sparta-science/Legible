@@ -4,7 +4,7 @@ import Nimble
 import Quick
 
 class CombineAssignToPublishedSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe(".assign(to:)") {
             var subject: Counter!
             var publisher: PassthroughSubject<Int, Never>!

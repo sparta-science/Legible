@@ -3,7 +3,7 @@ import Legible
 import Quick
 
 class CombineLatestSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("Publishers.CombineLatest") {
             var subject: AnyPublisher<(String, Bool), Never>!
             context("completion when finished") {

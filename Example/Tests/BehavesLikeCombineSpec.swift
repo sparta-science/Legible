@@ -4,7 +4,7 @@ import Quick
 import Legible
 
 class BehavesLikeCombineSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("Built in publishers") {
             context("Just value") {
                 itBehavesLike(CombinePublisher.self) {

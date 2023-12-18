@@ -4,7 +4,7 @@ import Legible
 import SwiftUI
 
 class SwiftUISpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("HDivider") {
             context("preview") {
                 var subject: NSView!

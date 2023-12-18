@@ -11,7 +11,7 @@ class MatchingSnapshotSpec: QuickSpec {
     }
     #endif
     
-    override func spec() {
+    override class func spec() {
         describe("matching snapshots") {
             itBehavesLike(MatchingSnapshot.self) {
                 Preview(HDivider_Previews.self)

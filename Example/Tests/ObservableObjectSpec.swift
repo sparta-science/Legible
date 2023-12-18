@@ -7,7 +7,7 @@ class Weather: ObservableObject {
 }
 
 class ObservableObjectSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("ObservableObject") {
             var subject: Weather!
             beforeEach {

@@ -3,7 +3,7 @@ import Nimble
 import Quick
 
 class CombineCurrentValueSubjectSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe(CurrentValueSubject<Int, Never>.self) {
             var subject: CurrentValueSubject<Int, Never>!
             var cancellables: Set<AnyCancellable>!

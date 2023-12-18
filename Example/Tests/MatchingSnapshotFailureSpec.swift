@@ -4,7 +4,7 @@ import Legible
 import SwiftUI
 
 class MatchingSnapshotFailureSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("MatchingSnapshot") {
             var fileManager: FileManager!
             var snapshotUrl: URL!

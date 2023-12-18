@@ -7,7 +7,7 @@ func myAddFunction(_ number: Int, _ add: Int) -> Int {
 }
 
 class BehavesLikeAsciiTableSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         sharedExamples("add integers") { aContext in
             it("should add") {
                 let number = aContext()["number"] as! Int

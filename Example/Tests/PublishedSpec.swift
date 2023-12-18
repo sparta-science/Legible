@@ -8,7 +8,7 @@ class Game {
 }
 
 class PublishedSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("@Published") {
             var subject: Game!
             beforeEach {

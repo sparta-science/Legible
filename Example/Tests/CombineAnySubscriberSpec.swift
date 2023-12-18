@@ -4,7 +4,7 @@ import Quick
 import Legible
 
 class CombineAnySubscriberSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("AnySubscriber.init") {
             var publisher: PassthroughSubject<String, Never>!
             weak var weakPublisher: PassthroughSubject<String, Never>!

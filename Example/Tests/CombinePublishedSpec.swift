@@ -4,7 +4,7 @@ import Nimble
 import Quick
 
 class CombinePublishedSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("@Published") {
             var subject: Connection!
             beforeEach {

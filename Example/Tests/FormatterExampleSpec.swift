@@ -17,7 +17,7 @@ class MyFormatter: MeasurementFormatter {
 }
 
 class FormatterExampleSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("MyFormatter") {
             context("as table of example") {
                 sharedExamples("formatted measuments") { aContext in

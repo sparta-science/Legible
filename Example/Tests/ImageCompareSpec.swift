@@ -9,7 +9,7 @@ typealias Bitmap = UIImage
 #endif
 
 class ImageCompareSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("significantlyDifferentImages") {
             var data1: Data!
             var data2: Data!

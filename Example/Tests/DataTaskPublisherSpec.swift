@@ -14,7 +14,7 @@ private func verifyError(_ incoming: URLError) -> Error {
 }
 
 class DataTaskPublisherSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("dataTaskPublisher") {
             var session: URLSession!
             beforeEach {
