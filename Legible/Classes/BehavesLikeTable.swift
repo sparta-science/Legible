@@ -18,28 +18,6 @@ extension Array where Element: CollectionType {
     }
 }
 
-extension Array where Element == String {
-    func allSameType<T: LosslessStringConvertible>() -> [T]? {
-        let converted = compactMap { T($0) }
-        if converted.count == count {
-            return converted
-        }
-        return nil
-    }
-    func asBestType() -> [Any] {
-        if let asInt: [Int] = allSameType() {
-            return asInt
-        }
-        if let asDouble: [Double] = allSameType() {
-            return asDouble
-        }
-        if let asBool: [Bool] = allSameType() {
-            return asBool
-        }
-        return self
-    }
-}
-
 public class BehavesLikeTable: Behavior<String> {
     public override class func spec(_ aContext: @escaping () -> String) {
         let lines = aContext()
@@ -55,7 +33,7 @@ public class BehavesLikeTable: Behavior<String> {
             $0.tabulated()
         }
         let columns = columnNames.enumerated().map {
-            stringRows.getColumn(column: $0.offset).asBestType()
+            stringRows.getColumn(column: $0.offset)
         }
         stringRows.enumerated().forEach { row in
             var dictionary: [String: Any] = [:]
@@ -68,3 +46,21 @@ public class BehavesLikeTable: Behavior<String> {
 }
 
 public class AsciiTable: BehavesLikeTable {}
+
+public extension String {
+     var asInt: Int {
+         Int(self)!
+     }
+
+     var asFloat: Float {
+         Float(self)!
+     }
+
+     var asDouble: Double {
+         Double(self)!
+     }
+
+     var asBool: Bool {
+         lowercased() == "true"
+     }
+ }

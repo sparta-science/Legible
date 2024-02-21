@@ -10,9 +10,9 @@ class BehavesLikeAsciiTableSpec: QuickSpec {
     override class func spec() {
         sharedExamples("add integers") { aContext in
             it("should add") {
-                let number = aContext()["number"] as! Int
-                let add = aContext()["add"] as! Int
-                let expected = aContext()["result"] as! Int
+                let number = (aContext()["number"] as! String).asInt
+                let add = (aContext()["add"] as! String).asInt
+                let expected = (aContext()["result"] as! String).asInt
                 expect(myAddFunction(number, add)) == expected
             }
         }
