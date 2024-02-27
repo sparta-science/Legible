@@ -29,11 +29,11 @@ class FormatterExampleSpec: QuickSpec {
                         subject = MyFormatter(locale: locale, style: style)
                     }
                     it("should match metric system") {
-                        expect(subject.locale.usesMetricSystem) == (aContext()["metric"] as! Bool)
+                        expect(subject.locale.usesMetricSystem) == (aContext()["metric"] as! String).asBool
                     }
                     it("should format in base units") {
                         let massUnits: [UnitMass] = [.grams, .kilograms, .pounds, .milligrams, .metricTons]
-                        let value = aContext()["value"] as! Double
+                        let value = (aContext()["value"] as! String).asDouble
                         let symbol = aContext()["unit"] as! String
                         let dimention = massUnits.first {
                             $0.symbol == symbol
