@@ -141,10 +141,14 @@ extension NSView {
     func bitmap() -> NSBitmapImageRep {
         let bitmap: NSBitmapImageRep! = bitmapImageRepForCachingDisplay(in: frame)
         expect(bitmap).notTo(beNil())
-        waitUntil { done in
-            DispatchQueue.main.async {
-                self.cacheDisplay(in: self.frame, to: bitmap)
-                done()
+        if #available(macOS 15.0, *) {
+            cacheDisplay(in: frame, to: bitmap)
+        } else {
+            waitUntil { done in
+                DispatchQueue.main.async {
+                    self.cacheDisplay(in: self.frame, to: bitmap)
+                    done()
+                }
             }
         }
         return bitmap

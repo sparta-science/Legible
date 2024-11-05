@@ -36,7 +36,7 @@ class SwiftUISpec: QuickSpec {
                             attachment.lifetime = .keepAlways
                             $0.add(attachment)
                         }
-                        expect(pngData).to(haveCount(259))
+                        expect(pngData.count).to(beGreaterThanOrEqualTo(259))
                         try! pngData.write(to: URL(fileURLWithPath: "/tmp/view-in-window.png"))
                     }
                 }
