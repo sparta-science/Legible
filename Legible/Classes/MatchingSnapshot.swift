@@ -180,17 +180,10 @@ extension UIView {
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1
         let renderer = UIGraphicsImageRenderer(bounds: bounds, format: format)
-        
-        var image: UIImage?
-        waitUntil { done in
-            DispatchQueue.main.async {
-                image = renderer.image { rendererContext in
-                    self.layer.render(in: rendererContext.cgContext)
-                }
-                done()
-            }
+        let image = renderer.image { rendererContext in
+            self.layer.render(in: rendererContext.cgContext)
         }
-        return image!
+        return image
     }
 }
 
